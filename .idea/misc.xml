@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18125" />
         <entry key="app/src/main/res/layout/activity_add_match.xml" value="0.2911458333333333" />
+        <entry key="app/src/main/res/layout/activity_add_player_details.xml" value="0.25931558935361215" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
       </map>

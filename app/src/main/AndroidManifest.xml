@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EGFootballTracker">
         <activity
+            android:name=".View.AddPlayerDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.AddMatchActivity"
             android:exported="false" />
         <activity
