@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "337870920769",
+    "project_id": "egfootballtracker",
+    "storage_bucket": "egfootballtracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337870920769:android:94ca90742b942c172fbac0",
+        "android_client_info": {
+          "package_name": "com.example.egfootballtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337870920769-fajuevrnqvkglo2iaddv0tl9ck73t381.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeNdEHIBzXXtBD_5l8ENvMhQ06mYxlVlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337870920769-fajuevrnqvkglo2iaddv0tl9ck73t381.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

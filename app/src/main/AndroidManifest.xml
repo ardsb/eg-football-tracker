@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.egfootballtracker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EGFootballTracker">
+        <activity
+            android:name=".View.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.HomepageActivity"
+            android:exported="false" />
         <activity
             android:name=".View.AddPlayerDetailsActivity"
             android:exported="false" />
@@ -18,7 +26,7 @@
         <activity
             android:name=".View.RegisterActivity"
             android:exported="false" />
-        <activity android:name=".View.LoginActivity">
+        <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
