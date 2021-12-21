@@ -18,11 +18,20 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.egfootballtracker.Adapter.NewsAdapter;
+import com.example.egfootballtracker.Model.SportNews;
+import com.example.egfootballtracker.Model.SportNewsList;
 import com.example.egfootballtracker.R;
+import com.example.egfootballtracker.Services.ApiClientNews;
+import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomepageActivity extends AppCompatActivity {
     private DrawerLayout dl;
@@ -30,7 +39,7 @@ public class HomepageActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     String TAG = HomepageActivity.class.getSimpleName();
     private final static String API_Key_NEWS = "fa0a460e2ca943f7bd5cf89cf16855cc";
-    private final static String Country = "in";
+    private final static String Country = "gb";
     private final static String Cat = "sports";
     private final static String API_Key_VIDEOS = "AIzaSyANcGmjuaXKqU3PfhiVdyNo4GBXGFTJZto";
     private final static String chId = "UCkd4takjjF1EGD1TKIK2QiA";
@@ -58,7 +67,7 @@ public class HomepageActivity extends AppCompatActivity {
         SnapHelper helper2 = new LinearSnapHelper();
         helper2.attachToRecyclerView(recyclerView2);
 
-//        getMatchNews();
+        getMatchNews();
 
         recyclerView3 = findViewById(R.id.recycler3);
         SnapHelper helper3 = new LinearSnapHelper();
@@ -92,31 +101,31 @@ public class HomepageActivity extends AppCompatActivity {
 
                         if (id == R.id.txtAddMatch) {
 
-//                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
-//                                    AddMatchActivity.class);
-//                            startActivity(mainActivityIntent);
+                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                                    AddMatchActivity.class);
+                            startActivity(mainActivityIntent);
 
                         } else if (id == R.id.txtAddPlayerDetails) {
 
-//                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
-////                                    AddPlayerDetailActivity.class);
-//                            startActivity(mainActivityIntent);
+                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                                    HomepageActivity.class);
+                            startActivity(mainActivityIntent);
 
 
                         } else if (id == R.id.txtShowPlayerDetails) {
 //
-//                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
-//                                    DisplayPlayersDetailsActivity.class);
-//                            startActivity(mainActivityIntent);
+                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                                    HomepageActivity.class);
+                            startActivity(mainActivityIntent);
 
                         }else if (id == R.id.txtLogout){
-//                            SharedPreferences.Editor editor= sharedPreferences.edit();
-//                            editor.clear();
-//                            editor.commit();
-//
-//                            Toast.makeText(HomepageActivity.this,
-//                                    "You have successfully logout from the Criclova system",
-//                                    Toast.LENGTH_LONG).show();
+                            SharedPreferences.Editor editor= sharedPreferences.edit();
+                            editor.clear();
+                            editor.commit();
+
+                            Toast.makeText(HomepageActivity.this,
+                                    "You have successfully logout from the Criclova system",
+                                    Toast.LENGTH_LONG).show();
 
 
                         } else if (id == R.id.txtExit)
@@ -131,7 +140,44 @@ public class HomepageActivity extends AppCompatActivity {
 
 
     }
+    private void getMatchNews() {
+        ApiInterface apiInterface = ApiClientNews.getClient().create(ApiInterface.class);
 
+        retrofit2.Call<SportNewsList> call = apiInterface.getMatchNews(Country, Cat, API_Key_NEWS);
+
+        ((retrofit2.Call) call).enqueue(new Callback<SportNewsList>() {
+            @Override
+            public void onResponse(retrofit2.Call<SportNewsList> call, Response<SportNewsList> response) {
+
+
+                if (response.isSuccessful() && response.body().getArticle().size() > 0) {
+                    List<SportNews> News = response.body().getArticle();
+
+
+                    NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout,
+                            getApplicationContext());
+
+                    recyclerView2.setAdapter(adapter);
+
+                } else {
+                    Toast.makeText(HomepageActivity.this, response.message(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<SportNewsList> call, Throwable t) {
+                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
+
+
+            }
+
+        });
+
+
+    }
 
 //    @Override
 //    protected void onStart() {
@@ -172,44 +218,10 @@ public class HomepageActivity extends AppCompatActivity {
 
 
 
-//    private void getMatchNews() {
-//        ApiInterface apiInterface = ApiClientNews.getClient().create(ApiInterface.class);
-//
-//        Call<SportNewsList> call = apiInterface.getMatchNews(Country, Cat, API_Key_NEWS);
-//
-//        ((Call) call).enqueue(new Callback<SportNewsList>() {
-//            @Override
-//            public void onResponse(Call<SportNewsList> call, Response<SportNewsList> response) {
-//
-//
-//                if (response.isSuccessful() && response.body().getArticle().size() > 0) {
-//                    List<SportNews> News = response.body().getArticle();
-//
-//
-//                    NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout,
-//                            getApplicationContext());
-//
-//                    recyclerView2.setAdapter(adapter);
-//
-//                } else {
-//                    Toast.makeText(HomepageActivity.this, response.message(),
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<SportNewsList> call, Throwable t) {
-//                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
-//
-//
-//            }
-//
-//        });
-//
-//
-//    }
+
+
+
+
 //
 //    private void getMatchVideos() {
 //        ApiInterface apiInterface = ApiClientVideos.getClient().create(ApiInterface.class);
