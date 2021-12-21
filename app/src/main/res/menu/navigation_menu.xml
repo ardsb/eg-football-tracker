@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/txtAddMatch"
+        android:icon="@drawable/ic_baseline_sports_cricket_24"
+        android:title="Add A Match">
+
+    </item>
+    <item
+        android:id="@+id/txtAddPlayerDetails"
+        android:icon="@drawable/ic_baseline_person_add_24"
+        android:title="Add  Players">
+
+    </item>
+
+    <item
+        android:id="@+id/txtShowPlayerDetails"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="Show Players">
+
+    </item>
+
+    <item
+        android:id="@+id/txtLogout"
+        android:icon="@drawable/ic_baseline_stop_circle_24"
+        android:title="Logout">
+
+    </item>
+    <item
+        android:id="@+id/txtExit"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Exit">
+
+    </item>
+
+
+</menu>
