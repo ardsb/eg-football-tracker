@@ -119,7 +119,7 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <Button
-                        android:id="@+id/btnAdd"
+                        android:id="@+id/btnAddMatch"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
