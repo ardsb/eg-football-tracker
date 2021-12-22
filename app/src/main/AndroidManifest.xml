@@ -18,6 +18,9 @@
             android:name=".View.HomepageActivity"
             android:exported="false" />
         <activity
+            android:name=".View.DisplayPlayersDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.AddPlayerDetailsActivity"
             android:exported="false" />
         <activity

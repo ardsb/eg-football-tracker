@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#00D50505"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="2dp"
+    card_view:contentPadding="16dp">
+
+
+
+    <LinearLayout
+        android:id="@+id/layoutFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfileImageList"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+        <LinearLayout
+            android:id="@+id/playerProfileLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Name:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arkam Iqbal" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Age:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="25" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Born:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileBorn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="April 3, 1996,Colombo, Srilanka" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Country:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Sriankan" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="PayingRole:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfilePosition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Top Order Batsmen" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="PayingRole:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Top Order Batsmen" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="MajorTeam:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileAppsStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="India,Asia XI,Mumbai,Mumbai Indians,Yorkshire" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Batting Style:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileMinutedStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Right Hand Batsmen" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Bowling Style:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileGoalStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Right-arm offbreak, Legbreak googly" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Name:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileAssistStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arkam Iqbal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Age:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileYelCardStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="25" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Born:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileRedCardStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="April 3, 1996,Colombo, Srilanka" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Country:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileSpgStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Sriankan" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="PayingRole:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfilePssStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Top Order Batsmen" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="MajorTeam:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileArialWonStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="India,Asia XI,Mumbai,Mumbai Indians,Yorkshire" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingHorizontal="5dp"
+                    android:text="Batting Style:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayingProfileMotMStatistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:text="Right Hand Batsmen" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
