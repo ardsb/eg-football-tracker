@@ -4,99 +4,70 @@ import java.io.Serializable;
 
 public class PlayerDetails implements Serializable {
 
-    public String id;
+    private String id;
 
-    public String mImageUrl;
+    private String mImageUrl;
 
-    public String playerName;
+    private String playerName;
 
-    public String currentAge;
+    private String currentAge;
 
-    public String born;
+    private String born;
 
-    public String country;
+    private String country;
 
-    public String playingRole;
+    private String height;
 
-    public String majorTeams;
+    private String position;
 
-    public String battingStyle;
+    private String Apps;
 
-    public String bowlingStyle;
+    private String minutes;
 
-    private String Matches;
+    private String goals;
 
-    private String Innings;
+    private String Assist;
 
-    private String RunsBatting;
+    private String yelCard;
 
-    private String HS;
+    private String redCard;
 
-    private String Ave;
+    private String spg;
 
-    private String SR;
+    private String pss;
 
-    private String halfCentury;
+    private String arialWon;
 
-    private String century;
-
-    private String Sixes;
-
-    private String fours;
-
-    private String MatchesBowling;
-
-    private String InningsBowling;
-
-    private String Balls;
-
-    private String Wkts;
-
-    private String fourWicketsHaul;
-
-    private String fiveWicketsHaul;
+    private String motM;
 
 
-    private String AveBowling;
 
-    private String Econ;
+
+
 
     public PlayerDetails(String id, String mImageUrl, String playerName, String currentAge,
-                         String born, String country, String playingRole, String majorTeams,
-                         String battingStyle, String bowlingStyle, String matches, String innings,
-                         String runsBatting, String HS, String ave, String SR, String halfCentury,
-                         String century, String sixes, String fours , String matchesBowling,
-                         String inningsBowling, String balls, String wkts
-            , String fourWicketsHaul, String fiveWicketsHaul, String aveBowling, String econ)  {
+                         String born, String country, String height, String position, String apps,
+                         String minutes, String goals, String assist, String yelCard, String redCard,
+                         String spg, String pss, String arialWon, String motM) {
         this.id = id;
         this.mImageUrl = mImageUrl;
         this.playerName = playerName;
         this.currentAge = currentAge;
         this.born = born;
         this.country = country;
-        this.playingRole = playingRole;
-        this.majorTeams = majorTeams;
-        this.battingStyle = battingStyle;
-        this.bowlingStyle = bowlingStyle;
-        Matches = matches;
-        Innings = innings;
-        RunsBatting = runsBatting;
-        this.HS = HS;
-        Ave = ave;
-        this.SR = SR;
-        this.halfCentury = halfCentury;
-        this.century = century;
-        Sixes = sixes;
-        this.fours = fours;
+        this.height = height;
+        this.position = position;
+        Apps = apps;
+        this.minutes = minutes;
+        this.goals = goals;
+        Assist = assist;
+        this.yelCard = yelCard;
+        this.redCard = redCard;
+        this.spg = spg;
+        this.pss = pss;
+        this.arialWon = arialWon;
+        this.motM = motM;
 
-        MatchesBowling = matchesBowling;
-        InningsBowling = inningsBowling;
-        Balls = balls;
-        Wkts = wkts;
-        this.fourWicketsHaul = fourWicketsHaul;
-        this.fiveWicketsHaul = fiveWicketsHaul;
-        AveBowling = aveBowling;
-        Econ = econ;
     }
 
     public PlayerDetails(){
@@ -107,6 +78,9 @@ public class PlayerDetails implements Serializable {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getmImageUrl() {
         return mImageUrl;
@@ -114,10 +88,6 @@ public class PlayerDetails implements Serializable {
 
     public void setmImageUrl(String mImageUrl) {
         this.mImageUrl = mImageUrl;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getPlayerName() {
@@ -152,179 +122,101 @@ public class PlayerDetails implements Serializable {
         this.country = country;
     }
 
-    public String getPlayingRole() {
-        return playingRole;
+    public String getHeight() {
+        return height;
     }
 
-    public void setPlayingRole(String playingRole) {
-        this.playingRole = playingRole;
+    public void setHeight(String height) {
+        this.height = height;
     }
 
-    public String getMajorTeams() {
-        return majorTeams;
+    public String getPosition() {
+        return position;
     }
 
-    public void setMajorTeams(String majorTeams) {
-        this.majorTeams = majorTeams;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getBattingStyle() {
-        return battingStyle;
+    public String getApps() {
+        return Apps;
     }
 
-    public void setBattingStyle(String battingStyle) {
-        this.battingStyle = battingStyle;
+    public void setApps(String apps) {
+        Apps = apps;
     }
 
-    public String getBowlingStyle() {
-        return bowlingStyle;
+    public String getMinutes() {
+        return minutes;
     }
 
-    public void setBowlingStyle(String bowlingStyle) {
-        this.bowlingStyle = bowlingStyle;
+    public void setMinutes(String minutes) {
+        this.minutes = minutes;
     }
 
-    public String getMatches() {
-        return Matches;
+    public String getGoals() {
+        return goals;
     }
 
-    public void setMatches(String matches) {
-        Matches = matches;
+    public void setGoals(String goals) {
+        this.goals = goals;
     }
 
-    public String getInnings() {
-        return Innings;
+    public String getAssist() {
+        return Assist;
     }
 
-    public void setInnings(String innings) {
-        Innings = innings;
+    public void setAssist(String assist) {
+        Assist = assist;
     }
 
-    public String getRunsBatting() {
-        return RunsBatting;
+    public String getYelCard() {
+        return yelCard;
     }
 
-    public void setRunsBatting(String runsBatting) {
-        RunsBatting = runsBatting;
+    public void setYelCard(String yelCard) {
+        this.yelCard = yelCard;
     }
 
-    public String getHS() {
-        return HS;
+    public String getRedCard() {
+        return redCard;
     }
 
-    public void setHS(String HS) {
-        this.HS = HS;
+    public void setRedCard(String redCard) {
+        this.redCard = redCard;
     }
 
-    public String getAve() {
-        return Ave;
+    public String getSpg() {
+        return spg;
     }
 
-    public void setAve(String ave) {
-        Ave = ave;
+    public void setSpg(String spg) {
+        this.spg = spg;
     }
 
-    public String getSR() {
-        return SR;
+    public String getPss() {
+        return pss;
     }
 
-    public void setSR(String SR) {
-        this.SR = SR;
+    public void setPss(String pss) {
+        this.pss = pss;
     }
 
-    public String getHalfCentury() {
-        return halfCentury;
+    public String getArialWon() {
+        return arialWon;
     }
 
-    public void setHalfCentury(String halfCentury) {
-        this.halfCentury = halfCentury;
+    public void setArialWon(String arialWon) {
+        this.arialWon = arialWon;
     }
 
-    public String getCentury() {
-        return century;
+    public String getMotM() {
+        return motM;
     }
 
-    public void setCentury(String century) {
-        this.century = century;
+    public void setMotM(String motM) {
+        this.motM = motM;
     }
 
-    public String getSixes() {
-        return Sixes;
-    }
 
-    public void setSixes(String sixes) {
-        Sixes = sixes;
-    }
-
-    public String getFours() {
-        return fours;
-    }
-
-    public void setFours(String fours) {
-        this.fours = fours;
-    }
-
-    public String getMatchesBowling() {
-        return MatchesBowling;
-    }
-
-    public void setMatchesBowling(String matchesBowling) {
-        MatchesBowling = matchesBowling;
-    }
-
-    public String getInningsBowling() {
-        return InningsBowling;
-    }
-
-    public void setInningsBowling(String inningsBowling) {
-        InningsBowling = inningsBowling;
-    }
-
-    public String getBalls() {
-        return Balls;
-    }
-
-    public void setBalls(String balls) {
-        Balls = balls;
-    }
-
-    public String getWkts() {
-        return Wkts;
-    }
-
-    public void setWkts(String wkts) {
-        Wkts = wkts;
-    }
-
-    public String getFourWicketsHaul() {
-        return fourWicketsHaul;
-    }
-
-    public void setFourWicketsHaul(String fourWicketsHaul) {
-        this.fourWicketsHaul = fourWicketsHaul;
-    }
-
-    public String getFiveWicketsHaul() {
-        return fiveWicketsHaul;
-    }
-
-    public void setFiveWicketsHaul(String fiveWicketsHaul) {
-        this.fiveWicketsHaul = fiveWicketsHaul;
-    }
-
-    public String getAveBowling() {
-        return AveBowling;
-    }
-
-    public void setAveBowling(String aveBowling) {
-        AveBowling = aveBowling;
-    }
-
-    public String getEcon() {
-        return Econ;
-    }
-
-    public void setEcon(String econ) {
-        Econ = econ;
-    }
 }

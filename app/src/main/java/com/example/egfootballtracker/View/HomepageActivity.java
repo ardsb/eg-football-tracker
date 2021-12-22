@@ -108,7 +108,7 @@ public class HomepageActivity extends AppCompatActivity {
                         } else if (id == R.id.txtAddPlayerDetails) {
 
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
-                                    HomepageActivity.class);
+                                    AddPlayerDetailsActivity.class);
                             startActivity(mainActivityIntent);
 
 

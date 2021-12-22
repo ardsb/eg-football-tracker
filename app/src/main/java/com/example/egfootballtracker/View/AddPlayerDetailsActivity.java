@@ -19,13 +19,14 @@ import android.widget.Toast;
 
 import com.example.egfootballtracker.Model.PlayerDetails;
 import com.example.egfootballtracker.R;
-import com.google.android.gms.tasks.Continuation;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -34,18 +35,16 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
     CircleImageView imageViewProfile;
     StorageReference storageRef;
 
-    TextView txtPLayersName, txtPLayersAge, txtPLayersBorn, txtPlayingCountry, txtPlayerPlayingRole,
-            txtMajorteam, txtPlayerBattingStyle, txtPlayerBowlingStyle;//For Profile
+    TextView txtPLayersName, txtPLayersAge, txtPLayersBorn, txtPlayingCountry, txtPlayersHeight,
+            txtPlayersPosition;//For Profile
 
-    TextView txtMatchesStatistic, txtInningsStatistic, txtRunsStaistic, txtHSStatistic,
-            txtAverageStatistic, txtStrikeRateStatistic, txtHalfCenturyStatistic,
-            txtCenturyStatistic, txtSixesStatistic, txtfoursStatistic;//For Batting Statistic
+    TextView txtAppsStatistic, txtMinutesStatistic, txtGoalsStaistic, txtAssistStatistic,
+            txtYelCardStatistic, txtRedCardStatistic, txtSpGStatistic,
+            txtPSStatistic, txtArialsWonStatistic, txtMotMStatistic;//For player's Statistics
     ;
 
-    TextView txtMatchesStatisticBowling, txtInningsStatisticBowling, txtBallsStaistic,
-            txtWicketsStatistic, txtFourWicketsHaulStatistic, txtAverageStatisticBowling,
-            txtFiveWicketsHaulStatistic, txtEconStatistic;//For Bowling Statistic
-    Button addMatch, btnChooseFile;
+
+    Button addPlayerDetails, btnChooseFile;
 
 
 
@@ -58,7 +57,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_player_detail);
+        setContentView(R.layout.activity_add_player_details);
 
 
         storageRef = FirebaseStorage.getInstance().getReference("profile-images");
@@ -70,34 +69,23 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         txtPLayersName = findViewById(R.id.txtPLayersName);
         txtPLayersAge = findViewById(R.id.txtPLayersAge);
         txtPLayersBorn = findViewById(R.id.txtPLayersBorn);
-        txtPlayingCountry = findViewById(R.id.txtPlayingCountry);
-        txtPlayerPlayingRole = findViewById(R.id.txtPlayerPlayingRole);
-        txtMajorteam = findViewById(R.id.txtMajorteam);
-        txtPlayerBattingStyle = findViewById(R.id.txtPlayerBattingStyle);
-        txtPlayerBowlingStyle = findViewById(R.id.txtPlayerBowlingStyle);
+        txtPlayingCountry = findViewById(R.id.txtPlayersCountry);
+        txtPlayersHeight = findViewById(R.id.txtPlayersHeight);
+        txtPlayersPosition = findViewById(R.id.txtPlayersPosition);
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
-        //For Batting Statistic
-        txtMatchesStatistic = findViewById(R.id.txtMatchesStatistic);
-        txtInningsStatistic = findViewById(R.id.txtInningsStatistic);
-        txtRunsStaistic = findViewById(R.id.txtRunsStaistic);
-        txtHSStatistic = findViewById(R.id.txtHSStatistic);
-        txtAverageStatistic = findViewById(R.id.txtAverageStatistic);
-        txtStrikeRateStatistic = findViewById(R.id.txtStrikeRateStatistic);
-        txtHalfCenturyStatistic = findViewById(R.id.txtHalfCenturyStatistic);
-        txtCenturyStatistic = findViewById(R.id.txtCenturyStatistic);
-        txtSixesStatistic = findViewById(R.id.txtSixesStatistic);
-        txtfoursStatistic = findViewById(R.id.txtfoursStatistic);
+        //For PLayer's Statistics
+        txtAppsStatistic = findViewById(R.id.txtAppsStatistic);
+        txtMinutesStatistic = findViewById(R.id.txtMinutesStatistic);
+        txtGoalsStaistic = findViewById(R.id.txtGoalsStaistic);
+        txtAssistStatistic = findViewById(R.id.txtAssistStatistic);
+        txtYelCardStatistic = findViewById(R.id.txtYelCardStatistic);
+        txtRedCardStatistic = findViewById(R.id.txtRedCardStatistic);
+        txtSpGStatistic = findViewById(R.id.txtSpGStatistic);
+        txtPSStatistic = findViewById(R.id.txtPSStatistic);
+        txtArialsWonStatistic = findViewById(R.id.txtArialsWonStatistic);
+        txtMotMStatistic = findViewById(R.id.txtMotMStatistic);
 
-        //For Bowling Statistic
-        txtMatchesStatisticBowling = findViewById(R.id.txtMatchesStatisticBowling);
-        txtInningsStatisticBowling = findViewById(R.id.txtInningsStatisticBowling);
-        txtBallsStaistic = findViewById(R.id.txtBallsStaistic);
-        txtWicketsStatistic = findViewById(R.id.txtWicketsStatistic);
-        txtFourWicketsHaulStatistic = findViewById(R.id.txtFourWicketsHaulStatistic);
-        txtFiveWicketsHaulStatistic = findViewById(R.id.txtFiveWicketsHaulStatistic);
-        txtAverageStatisticBowling = findViewById(R.id.txtAverageStatisticBowling);
-        txtEconStatistic = findViewById(R.id.txtEconStatistic);
 
 
 
@@ -118,8 +106,8 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         });
 
 
-        addMatch = findViewById(R.id.btnAdd);
-        addMatch.setOnClickListener(new View.OnClickListener() {
+        addPlayerDetails = findViewById(R.id.btnAdd);
+        addPlayerDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -138,33 +126,23 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         String PLayersAge = txtPLayersAge.getText().toString().trim();
         String PLayersBorn = txtPLayersBorn.getText().toString().trim();
         String PlayingCountry = txtPlayingCountry.getText().toString().trim();
-        String PlayerPlayingRole = txtPlayerPlayingRole.getText().toString().trim();
-        String Majorteam = txtMajorteam.getText().toString().trim();
-        String PlayerBattingStyle = txtPlayerBattingStyle.getText().toString().trim();
-        String PlayerBowlingStyle = txtPlayerBowlingStyle.getText().toString().trim();
-
-        //For Batting Statistic
-        String MatchesStatistic = txtMatchesStatistic.getText().toString().trim();
-        String InningsStatistic = txtInningsStatistic.getText().toString().trim();
-        String RunsStaistic = txtRunsStaistic.getText().toString().trim();
-        String HSStatistic = txtHSStatistic.getText().toString().trim();
-        String AverageStatistic = txtAverageStatistic.getText().toString().trim();
-        String StrikeRateStatistic = txtStrikeRateStatistic.getText().toString().trim();
-        String HalfCenturyStatisti = txtHalfCenturyStatistic.getText().toString().trim();
-        String CenturyStatistic = txtCenturyStatistic.getText().toString().trim();
-        String SixesStatistic = txtSixesStatistic.getText().toString().trim();
-        String foursStatistic = txtfoursStatistic.getText().toString().trim();
+        String PlayersHeight = txtPlayersHeight.getText().toString().trim();
+        String PlayersPosition = txtPlayersPosition.getText().toString().trim();
 
 
-        //For Bowling Statistic
-        String MatchesStatisticBowling = txtMatchesStatisticBowling.getText().toString().trim();
-        String InningsStatisticBowling = txtInningsStatisticBowling.getText().toString().trim();
-        String BallsStaistic = txtBallsStaistic.getText().toString().trim();
-        String WicketsStatistic = txtWicketsStatistic.getText().toString().trim();
-        String FourWicketsHaulStatistic = txtFourWicketsHaulStatistic.getText().toString().trim();
-        String FiveWicketsHaulStatistic = txtFiveWicketsHaulStatistic.getText().toString().trim();
-        String AverageStatisticBowling = txtAverageStatisticBowling.getText().toString().trim();
-        String EconStatistic = txtEconStatistic.getText().toString().trim();
+        //For Player's Statistics
+        String AppsStatistic = txtAppsStatistic.getText().toString().trim();
+        String MinutesStatistic = txtMinutesStatistic.getText().toString().trim();
+        String GoalsStaistic = txtGoalsStaistic.getText().toString().trim();
+        String AssistStatistic = txtAssistStatistic.getText().toString().trim();
+        String YelCardStatistic = txtYelCardStatistic.getText().toString().trim();
+        String RedCardStatistic = txtRedCardStatistic.getText().toString().trim();
+        String SpGStatistic = txtSpGStatistic.getText().toString().trim();
+        String PSStatistic = txtPSStatistic.getText().toString().trim();
+        String ArialsWonStatistic = txtArialsWonStatistic.getText().toString().trim();
+        String MotMStatistic = txtMotMStatistic.getText().toString().trim();
+
+
 
 
 
@@ -173,36 +151,21 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             //For Profile
         (!TextUtils.isEmpty(PLayersName) && !TextUtils.isEmpty(PLayersAge)
                 && !TextUtils.isEmpty(PLayersBorn) && !TextUtils.isEmpty(PlayingCountry)
-                && !TextUtils.isEmpty(PlayerPlayingRole) && !TextUtils.isEmpty(Majorteam)
-                && !TextUtils.isEmpty(PlayerBattingStyle)
-                && !TextUtils.isEmpty(PlayerBowlingStyle)
+                && !TextUtils.isEmpty(PlayersHeight) && !TextUtils.isEmpty(PlayersPosition)
 
-                //For Batting Statistic
-                && !TextUtils.isEmpty(MatchesStatistic) && !TextUtils.isEmpty(InningsStatistic)
-                && !TextUtils.isEmpty(RunsStaistic) && !TextUtils.isEmpty(HSStatistic)
-                && !TextUtils.isEmpty(AverageStatistic)
-                && !TextUtils.isEmpty(StrikeRateStatistic)
-                && !TextUtils.isEmpty(HalfCenturyStatisti) && !TextUtils.isEmpty(CenturyStatistic)
-                && !TextUtils.isEmpty(RunsStaistic) && !TextUtils.isEmpty(HSStatistic)
-                && !TextUtils.isEmpty(SixesStatistic)
-                && !TextUtils.isEmpty(foursStatistic)
 
-                //For Bowling Statistic
-                && !TextUtils.isEmpty(MatchesStatisticBowling)
-                && !TextUtils.isEmpty(InningsStatisticBowling)
-                && !TextUtils.isEmpty(BallsStaistic) && !TextUtils.isEmpty(WicketsStatistic)
-                && !TextUtils.isEmpty(FourWicketsHaulStatistic)
-                && !TextUtils.isEmpty(FiveWicketsHaulStatistic)
-                && !TextUtils.isEmpty(AverageStatisticBowling)
-                && !TextUtils.isEmpty(EconStatistic)) {
+                //For Player's Statistic
+                && !TextUtils.isEmpty(AppsStatistic) && !TextUtils.isEmpty(MinutesStatistic)
+                && !TextUtils.isEmpty(GoalsStaistic) && !TextUtils.isEmpty(AssistStatistic)
+                && !TextUtils.isEmpty(YelCardStatistic)
+                && !TextUtils.isEmpty(RedCardStatistic)
+                && !TextUtils.isEmpty(SpGStatistic) && !TextUtils.isEmpty(PSStatistic)
+                && !TextUtils.isEmpty(ArialsWonStatistic) && !TextUtils.isEmpty(MotMStatistic)){
 
             addProfileDetails(PLayersName, PLayersAge, PLayersBorn, PlayingCountry,
-                    PlayerPlayingRole, Majorteam, PlayerBattingStyle, PlayerBowlingStyle,
-                    MatchesStatistic, InningsStatistic, RunsStaistic, HSStatistic,
-                    AverageStatistic, StrikeRateStatistic, HalfCenturyStatisti, CenturyStatistic,
-                    SixesStatistic, foursStatistic, MatchesStatisticBowling,InningsStatisticBowling,
-                    BallsStaistic,WicketsStatistic, FourWicketsHaulStatistic,
-                    FiveWicketsHaulStatistic,AverageStatisticBowling, EconStatistic);
+                    PlayersHeight, PlayersPosition, AppsStatistic, MinutesStatistic,
+                    GoalsStaistic, AssistStatistic, YelCardStatistic, RedCardStatistic,
+                    SpGStatistic, PSStatistic, ArialsWonStatistic, MotMStatistic);
 
 
         } else {
@@ -210,6 +173,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Player details cannot be empty"
                     , Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override
@@ -243,16 +207,11 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                     uploadProgressDialog.show();
                 }
 
-                storageReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask
-                        .TaskSnapshot, Task<Uri>>() {
-                    @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task)
-                            throws Exception {
-                        if (!task.isSuccessful()) {
-                            throw task.getException();
-                        }
-                        return storageReference.getDownloadUrl();
+                storageReference.putFile(imageUri).continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
                     }
+                    return storageReference.getDownloadUrl();
                 }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
@@ -263,7 +222,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Uri downloadUri = task.getResult();
                             Log.e("TEST", "then: " + downloadUri.toString());
-                            Toast.makeText(AddPlayerDetailActivity.this
+                            Toast.makeText(AddPlayerDetailsActivity.this
                                     , "New Player Has Added", Toast.LENGTH_LONG)
                                     .show();
                             imageUploadUrl = downloadUri.toString();
@@ -306,20 +265,18 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
     }
 
     public void addProfileDetails(String PLayersName, String PLayersAge, String PLayersBorn
-            , String PlayingCountry, String PlayerPlayingRole, String Majorteam
-            , String PlayerBattingStyle, String PlayerBowlingStyle, String Matches, String Innings
-            , String RunsBatting, String HS, String Ave, String SR, String HalfCentury
-            , String Century, String Sixes, String Fours, String MatchesBowling
-            , String inningsBowling, String balls, String wkts, String fourWicketsHaul
-            , String fiveWicketsHaul, String aveBowling, String econ) {
+            , String PlayingCountry, String PlayersHeight, String PlayersPosition, String AppsStatistic,
+                                  String MinutesStatistic, String GoalsStaistic, String AssistStatistic,
+                                  String YelCardStatistic, String RedCardStatistic,
+                                  String SpGStatistic, String PSStatistic,
+                                  String ArialsWonStatistic, String MotMStatistic) {
 
 
         String id = myRef.push().getKey();
         PlayerDetails playerDetails = new PlayerDetails(id, imageUploadUrl, PLayersName, PLayersAge
-                , PLayersBorn, PlayingCountry, PlayerPlayingRole, Majorteam, PlayerBattingStyle
-                , PlayerBowlingStyle, Matches, Innings, RunsBatting, HS, Ave, SR, HalfCentury
-                , Century, Sixes, Fours,MatchesBowling,inningsBowling,balls,wkts,fourWicketsHaul
-                ,fiveWicketsHaul,aveBowling,econ);
+                , PLayersBorn, PlayingCountry, PlayersHeight, PlayersPosition, AppsStatistic
+                , MinutesStatistic,  GoalsStaistic, AssistStatistic, YelCardStatistic, RedCardStatistic,
+                SpGStatistic, PSStatistic,ArialsWonStatistic,MotMStatistic);
 
         myRef.child(id).setValue(playerDetails);
     }
