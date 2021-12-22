@@ -18,13 +18,20 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.egfootballtracker.Adapter.LiveScoreAdapter;
 import com.example.egfootballtracker.Adapter.NewsAdapter;
+import com.example.egfootballtracker.Model.Matches;
 import com.example.egfootballtracker.Model.SportNews;
 import com.example.egfootballtracker.Model.SportNewsList;
 import com.example.egfootballtracker.R;
 import com.example.egfootballtracker.Services.ApiClientNews;
 import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +51,8 @@ public class HomepageActivity extends AppCompatActivity {
     private final static String API_Key_VIDEOS = "AIzaSyANcGmjuaXKqU3PfhiVdyNo4GBXGFTJZto";
     private final static String chId = "UCkd4takjjF1EGD1TKIK2QiA";
     private final static String part = "snippet,id";
-//    DatabaseReference myRef;
-//    List<Matches> matches;
+    DatabaseReference myRef;
+    List<Matches> matches;
     RecyclerView recyclerView, recyclerView2, recyclerView3;
 
     @Override
@@ -53,12 +60,12 @@ public class HomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        myRef = database.getReference("Match Scores");//Database name
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Match Scores");//Database name
 
 
         recyclerView = findViewById(R.id.recycler);
-//        matches = new ArrayList<>();
+        matches = new ArrayList<>();
         SnapHelper helper = new LinearSnapHelper();
         helper.attachToRecyclerView(recyclerView);
 
@@ -179,41 +186,41 @@ public class HomepageActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                matches.clear();
-//
-//                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-//
-//                    Matches match = postSnapshot.getValue(Matches.class);
-//
-//                    matches.add(match);
-//                }
-//
-//                if (matches.size() > 0) {
-//
-//                    LiveScoreAdapter LiveScoreAdapter = new LiveScoreAdapter
-//                            (HomepageActivity.this, matches);
-//
-//                    LiveScoreAdapter adapter = new LiveScoreAdapter
-//                            (HomepageActivity.this, matches);
-//
-//
-//                    recyclerView.setAdapter(adapter);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.w(TAG, "Failed to read value.", error.toException());
-//            }
-//        });
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                matches.clear();
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    Matches match = postSnapshot.getValue(Matches.class);
+
+                    matches.add(match);
+                }
+
+                if (matches.size() > 0) {
+
+                    LiveScoreAdapter LiveScoreAdapter = new LiveScoreAdapter
+                            (HomepageActivity.this, matches);
+
+                    LiveScoreAdapter adapter = new LiveScoreAdapter
+                            (HomepageActivity.this, matches);
+
+
+                    recyclerView.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    }
 
 
 
