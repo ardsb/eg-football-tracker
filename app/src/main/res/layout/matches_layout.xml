@@ -13,17 +13,15 @@
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="3dp"
         card_view:cardUseCompatPadding="true"
-        card_view:contentPaddingBottom="10dp"
-        card_view:contentPaddingLeft="10dp"
-        card_view:contentPaddingRight="10dp"
-        card_view:contentPaddingTop="10dp">
+        card_view:contentPadding="5dp"
+        card_view:cardBackgroundColor="#FF186793">
 
         <TextView
             android:id="@+id/liveScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
             android:text="live Score"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="#BA0E0E" />

@@ -8,20 +8,21 @@
     tools:context=".View.HomepageActivity"
     android:orientation="vertical"
     android:id="@+id/d1"
-
     >
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.HomepageActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/test1"
@@ -30,16 +31,16 @@
             android:fontFamily="sans-serif-black"
             android:text="Matches"
             android:textSize="18sp"
+
             android:typeface="monospace" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
-            android:layout_margin="10dp"
-            android:layout_width="370dp"
+            android:layout_width="343dp"
             android:layout_height="170dp"
             android:orientation="horizontal"
+            android:layout_margin="3dp"
             tools:listitem="@layout/matches_layout"
-            tools:itemCount="10"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
     </LinearLayout>
 
@@ -62,9 +63,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler2"
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
     </LinearLayout>
@@ -87,8 +87,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler3"
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
@@ -96,7 +95,7 @@
 </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="250dp"
+        android:layout_width="220dp"
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
         android:layout_gravity="start"

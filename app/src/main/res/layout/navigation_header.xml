@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="250dp"
+    android:layout_width="220dp"
     android:layout_height="wrap_content"
     android:layout_gravity=""
     android:background="?colorPrimary">
@@ -15,7 +15,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_gravity="center"
-        android:src="@drawable/adminimage"
+        android:src="@drawable/arkam"
         app:civ_border_width="2dp"
         android:layout_marginTop="10dp"
         app:civ_border_color="#FF000000"/>
@@ -28,7 +28,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/white"
-        android:text="Lionel Messi" />
+        android:text="Arkam Iqbal" />
 
     <TextView
         android:id="@+id/txtProfileCountryName"

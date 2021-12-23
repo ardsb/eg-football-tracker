@@ -20,11 +20,15 @@ import android.widget.Toast;
 
 import com.example.egfootballtracker.Adapter.LiveScoreAdapter;
 import com.example.egfootballtracker.Adapter.NewsAdapter;
+import com.example.egfootballtracker.Adapter.VideosAdapter;
+import com.example.egfootballtracker.Model.Item;
 import com.example.egfootballtracker.Model.Matches;
 import com.example.egfootballtracker.Model.SportNews;
 import com.example.egfootballtracker.Model.SportNewsList;
+import com.example.egfootballtracker.Model.SportVideosResponse;
 import com.example.egfootballtracker.R;
 import com.example.egfootballtracker.Services.ApiClientNews;
+import com.example.egfootballtracker.Services.ApiClientVideos;
 import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -49,7 +53,7 @@ public class HomepageActivity extends AppCompatActivity {
     private final static String Country = "gb";
     private final static String Cat = "sports";
     private final static String API_Key_VIDEOS = "AIzaSyANcGmjuaXKqU3PfhiVdyNo4GBXGFTJZto";
-    private final static String chId = "UCkd4takjjF1EGD1TKIK2QiA";
+    private final static String chId = "UC5SQGzkWyQSW_fe-URgq7xw";
     private final static String part = "snippet,id";
     DatabaseReference myRef;
     List<Matches> matches;
@@ -80,7 +84,7 @@ public class HomepageActivity extends AppCompatActivity {
         SnapHelper helper3 = new LinearSnapHelper();
         helper3.attachToRecyclerView(recyclerView3);
 
-//        getMatchVideos();
+        getMatchVideos();
 
 
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
@@ -230,52 +234,52 @@ public class HomepageActivity extends AppCompatActivity {
 
 
 //
-//    private void getMatchVideos() {
-//        ApiInterface apiInterface = ApiClientVideos.getClient().create(ApiInterface.class);
+    private void getMatchVideos() {
+        ApiInterface apiInterface = ApiClientVideos.getClient().create(ApiInterface.class);
+
+        Call<SportVideosResponse> call = apiInterface.getMatchVideos(API_Key_VIDEOS, chId, part);
+
+        ((Call) call).enqueue(new Callback<SportVideosResponse>() {
+            @Override
+            public void onResponse(Call<SportVideosResponse> call,
+                                   Response<SportVideosResponse> response) {
+
+
+                SportVideosResponse body = response.body();
+                if (response.isSuccessful() && body.getItem().size() > 0) {
+                    List<Item> videos = body.getItem();
+
+                    Log.e(TAG, String.format("OnSuccess: %s", body.getItem()));
+
+                    VideosAdapter adapter = new VideosAdapter(videos, R.layout.videos_layout,
+                            getApplicationContext());
+
+                    recyclerView3.setAdapter(adapter);
+
+
 //
-//        Call<SportVideosResponse> call = apiInterface.getMatchVideos(API_Key_VIDEOS, chId, part);
-//
-//        ((Call) call).enqueue(new Callback<SportVideosResponse>() {
-//            @Override
-//            public void onResponse(Call<SportVideosResponse> call,
-//                                   Response<SportVideosResponse> response) {
-//
-//
-//                SportVideosResponse body = response.body();
-//                if (response.isSuccessful() && body.getItem().size() > 0) {
-//                    List<Item> videos = body.getItem();
-//
-//                    Log.e(TAG, String.format("OnSuccess: %s", body.getItem()));
-//
-//                    VideosAdapter adapter = new VideosAdapter(videos, R.layout.videos_layout,
-//                            getApplicationContext());
-//
-//                    recyclerView3.setAdapter(adapter);
-//
-//
-////
-//
-//
-//                } else {
-//                    Log.e(TAG, String.format("OnFailure: %s", response.message()));
-//                    Toast.makeText(HomepageActivity.this, response.message(),
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<SportVideosResponse> call, Throwable t) {
-//                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
-//
-//
-//            }
-//
-//        });
-//
-//
-//    }
+
+
+                } else {
+                    Log.e(TAG, String.format("OnFailure: %s", response.message()));
+                    Toast.makeText(HomepageActivity.this, response.message(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<SportVideosResponse> call, Throwable t) {
+                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
+
+
+            }
+
+        });
+
+
+    }
 
 
     @Override

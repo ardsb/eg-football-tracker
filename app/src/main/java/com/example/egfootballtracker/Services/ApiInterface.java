@@ -3,6 +3,7 @@ package com.example.egfootballtracker.Services;
 
 
 import com.example.egfootballtracker.Model.SportNewsList;
+import com.example.egfootballtracker.Model.SportVideosResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,8 +14,8 @@ public interface ApiInterface {
     Call<SportNewsList> getMatchNews(@Query("country") String country, @Query("category")
             String cat, @Query("apiKey") String name);
 
-//    @GET("search")
-//    Call<SportVideosResponse> getMatchVideos(@Query("key") String key, @Query("channelId")
-//            String chId, @Query("part") String part);
+    @GET("search")
+    Call<SportVideosResponse> getMatchVideos(@Query("key") String key, @Query("channelId")
+            String chId, @Query("part") String part);
 
 }
