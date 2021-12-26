@@ -13,7 +13,8 @@
     card_view:contentPaddingLeft="10dp"
     card_view:contentPaddingRight="10dp"
     card_view:contentPaddingTop="10dp"
-    card_view:cardBackgroundColor="#186793">
+    card_view:cardBackgroundColor="#186793"
+    app:ignore="NamespaceTypo">
 
     <ScrollView
         android:layout_width="match_parent"
