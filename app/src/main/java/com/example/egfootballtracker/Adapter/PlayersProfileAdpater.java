@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.egfootballtracker.Model.PlayerDetails;
 import com.example.egfootballtracker.R;
+import com.example.egfootballtracker.View.PlayerStatisticActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -121,16 +122,16 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
         }
 
 
-//        viewHolder.layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent mainActivityIntent = new Intent(context
-//                        , PlayerStatisticActivity.class);
-//                PlayerDetails playerDetails=dataSet.get(position);
-//                mainActivityIntent.putExtra("Player Details",playerDetails);
-//                context.startActivity(mainActivityIntent);
-//            }
-//        });
+        viewHolder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainActivityIntent = new Intent(context
+                        , PlayerStatisticActivity.class);
+                PlayerDetails playerDetails=dataSet.get(position);
+                mainActivityIntent.putExtra("Player Details",playerDetails);
+                context.startActivity(mainActivityIntent);
+            }
+        });
 
     }
 
