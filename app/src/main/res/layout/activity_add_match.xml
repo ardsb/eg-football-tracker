@@ -105,6 +105,23 @@
                         android:text="0 " />
 
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/txtMatchTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="?android:colorBackground"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="Time"
+                        android:inputType="none"
+                        android:text="00:00 " />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <LinearLayout

@@ -6,15 +6,18 @@ public class Matches implements Serializable {
 
     private String id;
     private String teamNameA,teamNameB;
-    private String teamNameAScores,teamNameBScores;
+    private String teamNameAScores,teamNameBScores,matchTime;
+
+
 
     public Matches(String id, String teamNameA, String teamNameB, String teamNameAScores
-            , String teamNameBScores) {
+            , String teamNameBScores,String matchTime) {
         this.id = id;
         this.teamNameA = teamNameA;
         this.teamNameB = teamNameB;
         this.teamNameAScores = teamNameAScores;
         this.teamNameBScores = teamNameBScores;
+        this.matchTime = matchTime;
     }
 
     public Matches(){
@@ -59,5 +62,13 @@ public class Matches implements Serializable {
 
     public void setTeamNameBScores(String teamNameBScores) {
         this.teamNameBScores = teamNameBScores;
+    }
+
+    public String getMatchTime() {
+        return matchTime;
+    }
+
+    public void setMatchTime(String matchTime) {
+        this.matchTime = matchTime;
     }
 }

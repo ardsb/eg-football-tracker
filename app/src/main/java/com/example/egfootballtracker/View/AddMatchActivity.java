@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AddMatchActivity extends AppCompatActivity {
 
     DatabaseReference myRef;
-    TextView txtHomeTeamName,txtHomeTeamScore,txtHostTeamName,txtHostTeamScore;
+    TextView txtHomeTeamName,txtHomeTeamScore,txtHostTeamName,txtHostTeamScore,txtMatchTime;
     Button addMatch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class AddMatchActivity extends AppCompatActivity {
         txtHomeTeamScore=findViewById(R.id.txtHomeTeamScore);
         txtHostTeamName=findViewById(R.id.txtHostTeamName);
         txtHostTeamScore=findViewById(R.id.txtHostTeamScore);
+        txtMatchTime=findViewById(R.id.txtMatchTime);
 
         addMatch=findViewById(R.id.btnAddMatch);
         addMatch.setOnClickListener(new View.OnClickListener() {
@@ -41,12 +42,13 @@ public class AddMatchActivity extends AppCompatActivity {
                 String HomeTeamScore = txtHomeTeamScore.getText().toString().trim();
                 String HostTeamName = txtHostTeamName.getText().toString().trim();
                 String HostTeamScore = txtHostTeamScore.getText().toString().trim();
-
+                String MatchTime = txtMatchTime.getText().toString().trim();
 
                 if(!TextUtils.isEmpty(HomeTeamName) && !TextUtils.isEmpty(HomeTeamScore)
-                        && !TextUtils.isEmpty(HostTeamName)&& !TextUtils.isEmpty(HostTeamScore)  ){
+                        && !TextUtils.isEmpty(HostTeamName)&& !TextUtils.isEmpty(HostTeamScore)
+                        && !TextUtils.isEmpty(MatchTime)  ){
 
-                    addMatch(HomeTeamName,HostTeamName,HomeTeamScore,HostTeamScore);
+                    addMatch(HomeTeamName,HostTeamName,HomeTeamScore,HostTeamScore,MatchTime);
 
                 }else {
 
@@ -61,11 +63,11 @@ public class AddMatchActivity extends AppCompatActivity {
     }
 
     public void addMatch(String HomeTeamName, String HostTeamName, String HomeTeamScore,
-                         String HostTeamScore){
+                         String HostTeamScore,String MatchTime){
 
 
         String id = myRef.push().getKey();
-        Matches match = new Matches(id,HomeTeamName,HostTeamName,HomeTeamScore,HostTeamScore);
+        Matches match = new Matches(id,HomeTeamName,HostTeamName,HomeTeamScore,HostTeamScore,MatchTime);
         myRef.child(id).setValue(match);
 
 
