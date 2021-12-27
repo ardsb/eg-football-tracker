@@ -8,31 +8,277 @@
     tools:context=".View.PlayerStatisticActivity"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:orientation="horizontal">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgProfileDisplayListStatistic"
-            android:layout_width="130dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
-            android:src="@drawable/arkam"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp"
-            app:srcCompat="@drawable/arkam" />
-
-
-        <ScrollView
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:orientation="horizontal"
+                >
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="210dp"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgProfileDisplayListStatistic"
+                        android:layout_width="130dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/arkam"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="2dp"
+                        app:srcCompat="@drawable/arkam" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        card_view:cardElevation="3dp"
+                        card_view:cardCornerRadius="10dp"
+                        android:layout_marginLeft="5dp"
+                        card_view:cardBackgroundColor="#186793"
+
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+
+                                >
+
+
+                                <TextView
+                                    android:id="@+id/txtPlayerPerfomanceStatistic"
+                                    android:layout_width="140dp"
+                                    android:layout_height="30dp"
+                                    android:gravity="center"
+                                    android:text="Perfomance"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+                </LinearLayout>
+
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="3dp"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:contentPaddingBottom="10dp"
+                    card_view:contentPaddingLeft="10dp"
+                    card_view:contentPaddingRight="10dp"
+                    card_view:contentPaddingTop="10dp"
+                    card_view:cardBackgroundColor="#186793">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp">
+
+                            <TextView
+                                android:id="@+id/txtProfileNameInput"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:fontFamily="sans-serif-black"
+                                android:paddingHorizontal="5dp"
+                                android:text="Name:"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtPlayerNameStatistic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:paddingHorizontal="5dp"
+                                android:text="Arkam Iqbal" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:fontFamily="sans-serif-black"
+                                android:paddingHorizontal="5dp"
+                                android:text="Age:"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtPlayerAgeStatistic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:paddingHorizontal="5dp"
+                                android:text="25" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:fontFamily="sans-serif-black"
+                                android:paddingHorizontal="5dp"
+                                android:text="Born:"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtPlayerBornStatistic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:paddingHorizontal="5dp"
+                                android:text="April 3, 1996,Colombo, Srilanka" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:fontFamily="sans-serif-black"
+                                android:paddingHorizontal="5dp"
+                                android:text="Country:"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtPlayerCountryStatistic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:paddingHorizontal="5dp"
+                                android:text="Sriankan" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_margin="5dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:fontFamily="sans-serif-black"
+                                android:paddingHorizontal="5dp"
+                                android:text="Height:"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtPlayerHeightStatistic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:paddingHorizontal="5dp"
+                                android:text="India,Asia XI,Mumbai,Mumbai Indians,Yorkshire" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:fontFamily="sans-serif-black"
+                                android:paddingHorizontal="5dp"
+                                android:text="Position:"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtPlayerPositionStatistic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:paddingHorizontal="5dp"
+                                android:text="Defend" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/test2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/holtwood_one_sc"
+                    android:text="Statistics"
+                    android:textAllCaps="true"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:typeface="monospace" />
+
+
+
+
+            </LinearLayout>
 
 
             <androidx.cardview.widget.CardView
@@ -44,500 +290,338 @@
                 card_view:contentPaddingBottom="10dp"
                 card_view:contentPaddingLeft="10dp"
                 card_view:contentPaddingRight="10dp"
-                card_view:contentPaddingTop="10dp">
-
+                card_view:contentPaddingTop="10dp"
+                card_view:cardBackgroundColor="#186793">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp">
 
-                        <TextView
-                            android:id="@+id/txtProfileNameInput"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:fontFamily="sans-serif-black"
-                            android:paddingHorizontal="5dp"
-                            android:text="Name:"
-                            android:textSize="16sp" />
 
-                        <TextView
-                            android:id="@+id/txtPlayerNameStatistic"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:paddingHorizontal="5dp"
-                            android:text="Arkam Iqbal" />
 
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:fontFamily="sans-serif-black"
-                            android:paddingHorizontal="5dp"
-                            android:text="Age:"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/txtPlayerAgeStatistic"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:paddingHorizontal="5dp"
-                            android:text="25" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:fontFamily="sans-serif-black"
-                            android:paddingHorizontal="5dp"
-                            android:text="Born:"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/txtPlayerBornStatistic"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:paddingHorizontal="5dp"
-                            android:text="April 3, 1996,Colombo, Srilanka" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:fontFamily="sans-serif-black"
-                            android:paddingHorizontal="5dp"
-                            android:text="Country:"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/txtPlayerCountryStatistic"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:paddingHorizontal="5dp"
-                            android:text="Sriankan" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:layout_margin="5dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:fontFamily="sans-serif-black"
-                            android:paddingHorizontal="5dp"
-                            android:text="Height:"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/txtPlayerHeightStatistic"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:paddingHorizontal="5dp"
-                            android:text="India,Asia XI,Mumbai,Mumbai Indians,Yorkshire" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:fontFamily="sans-serif-black"
-                            android:paddingHorizontal="5dp"
-                            android:text="Position:"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/txtPlayerPositionStatistic"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            android:paddingHorizontal="5dp"
-                            android:text="Defend" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </ScrollView>
-
-    </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:id="@+id/test2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/holtwood_one_sc"
-                android:text="Statistics"
-                android:textAllCaps="true"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:typeface="monospace" />
-
-
-
-
-        </LinearLayout>
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="3dp"
-        card_view:cardUseCompatPadding="true"
-        card_view:contentPaddingBottom="10dp"
-        card_view:contentPaddingLeft="10dp"
-        card_view:contentPaddingRight="10dp"
-        card_view:contentPaddingTop="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-
-                    <LinearLayout
-                        android:layout_width="200dp"
-                        android:layout_height="match_parent"
                         android:gravity="center"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical"
-                        >
-
+                        android:orientation="horizontal">
 
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
+                            android:layout_width="200dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical"
+                            >
 
-                            <TextView
-                                android:id="@+id/txt1"
-                                android:layout_width="0dp"
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="Apps:"
-                                android:textSize="16sp" />
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="Apps:"
+                                    android:textSize="16sp" />
 
 
-                            <TextView
-                                android:id="@+id/txtAppsStatisticPassing"
-                                android:layout_width="0dp"
+                                <TextView
+                                    android:id="@+id/txtAppsStatisticPassing"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:gravity="right"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:gravity="right"
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="Minutes:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtMinutesStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:gravity="right"
+
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="Goals:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtGoalsStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="right"
+                                    android:layout_weight="5"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="Assist:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtAssistStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:paddingHorizontal="5dp"
+                                    android:gravity="right"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="Yellow Card:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtYelCardStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="right"
+                                    android:layout_weight="5"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="Red Card:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtRedCardStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="right"
+
+                                    android:layout_weight="5"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt13"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="SpG:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtSpGStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:gravity="right"
+
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt14"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="PSS:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtPSSStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:gravity="right"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt9"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="Arials Won:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtArialsStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="right"
+
+                                    android:layout_weight="5"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:fontFamily="sans-serif-black"
+                                    android:paddingHorizontal="5dp"
+                                    android:text="MotM:"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtMotMStatisticPassing"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:paddingHorizontal="5dp"
+                                    android:gravity="right"
+
+                                    android:text="177" />
+
+                            </LinearLayout>
+
+
 
 
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="Minutes:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtMinutesStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:gravity="right"
-
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="Goals:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtGoalsStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:layout_weight="5"
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt5"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="Assist:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtAssistStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:paddingHorizontal="5dp"
-                                android:gravity="right"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt6"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="Yellow Card:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtYelCardStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:layout_weight="5"
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt8"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="Red Card:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtRedCardStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-
-                                android:layout_weight="5"
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt13"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="SpG:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtSpGStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:gravity="right"
-
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt14"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="PSS:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtPSSStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:gravity="right"
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt9"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="Arials Won:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtArialsStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-
-                                android:layout_weight="5"
-                                android:paddingHorizontal="5dp"
-                                android:text="177" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp">
-
-                            <TextView
-                                android:id="@+id/txt10"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:fontFamily="sans-serif-black"
-                                android:paddingHorizontal="5dp"
-                                android:text="MotM:"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/txtMotMStatisticPassing"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:paddingHorizontal="5dp"
-                                android:gravity="right"
-
-                                android:text="177" />
-
-                        </LinearLayout>
-
-
 
 
                     </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnDelete"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:backgroundTint="@color/design_default_color_error"
+                            android:text="Delete" />
+
+                        <Button
+                            android:id="@+id/btnEdit"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Edit" />
+                    </LinearLayout>
+
+
+
+
 
 
                 </LinearLayout>
@@ -545,39 +629,13 @@
 
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnDelete"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:backgroundTint="@color/design_default_color_error"
-                    android:text="Delete" />
-
-                <Button
-                    android:id="@+id/btnEdit"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Edit" />
-            </LinearLayout>
-
-
-
-
-
-
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
+    </ScrollView>
 
 
 
 
-    </androidx.cardview.widget.CardView>
 
 
 
