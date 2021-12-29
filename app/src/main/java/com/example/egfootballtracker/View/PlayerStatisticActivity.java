@@ -27,10 +27,8 @@ public class PlayerStatisticActivity extends AppCompatActivity {
             txtSpGStatisticPassing,txtPSSStatisticPassing,txtArialsStatisticPassing,
             txtMotMStatisticPassing; //For Player's Statistic
 
-
-
     DatabaseReference myRef;
-    Button btndelete;
+    Button btnDelete;
     CircleImageView imageView;
 
     
@@ -69,7 +67,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
                 .into(imageView);
 
 
-        //For Batting Statistic
+        //For Player's Statistic
         txtAppsStatisticPassing = findViewById(R.id.txtAppsStatisticPassing);
         txtMinutesStatisticPassing = findViewById(R.id.txtMinutesStatisticPassing);
         txtGoalsStatisticPassing = findViewById(R.id.txtGoalsStatisticPassing);
@@ -95,8 +93,8 @@ public class PlayerStatisticActivity extends AppCompatActivity {
 
 
 
-        btndelete=findViewById(R.id.btnDelete);
-        btndelete.setOnClickListener(new View.OnClickListener() {
+        btnDelete=findViewById(R.id.btnDelete);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(PlayerStatisticActivity.this, "One player has deleted ",

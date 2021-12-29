@@ -1,5 +1,6 @@
     package com.example.egfootballtracker.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -27,14 +28,12 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
 
         LinearLayout layout;
 
-        TextView txtPLayersName, txtprofileCountryName,txtPLayersAge,txtProfileBorn,txtPlayerPlayersHeight
-                ,txtPlayersPosition;
+        TextView txtPLayersName, txtPlayerCountryName,txtPlayersAge,txtPlayerBorn,
+                txtPlayerPlayersHeight,txtPlayersPosition;
 
         TextView txtAppsStatistic,txtMinutesStatistic,txtGoalsStatistic,txtAssistStatistic,
                 txtYelCardStatistic,txtRedCardStatistic,txtSpGStatistic,txtPSStatistic,
                 txtArialsWonStatistic,txtMotMStatistic;
-                    //For Player's Statistic
-
 
        public CircleImageView imageView;
 
@@ -43,9 +42,9 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
 
             //For Profile
             txtPLayersName = view.findViewById(R.id.txtDisplayingProfileName);
-            txtprofileCountryName = view.findViewById(R.id.txtDisplayingProfileCountry);
-            txtPLayersAge = view.findViewById(R.id.txtDisplayingProfileAge);
-            txtProfileBorn = view.findViewById(R.id.txtDisplayingProfileBorn);
+            txtPlayerCountryName = view.findViewById(R.id.txtDisplayingProfileCountry);
+            txtPlayersAge = view.findViewById(R.id.txtDisplayingProfileAge);
+            txtPlayerBorn = view.findViewById(R.id.txtDisplayingProfileBorn);
             txtPlayerPlayersHeight = view.findViewById(R.id.txtDisplayingProfileHeight);
             txtPlayersPosition = view.findViewById(R.id.txtDisplayingProfilePosition);
             layout = view.findViewById(R.id.playerProfileLayout);
@@ -62,13 +61,6 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
             txtPSStatistic=view.findViewById(R.id.txtDisplayingProfilePssStatistic);
             txtArialsWonStatistic=view.findViewById(R.id.txtDisplayingProfileArialWonStatistic);
             txtMotMStatistic=view.findViewById(R.id.txtDisplayingProfileMotMStatistic);
-
-
-
-
-
-
-
         }
     }
 
@@ -86,19 +78,18 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView")
+    final int position) {
 
         PlayerDetails playerDetails = dataSet.get(position);
 
         //For Profile
         viewHolder.txtPLayersName.setText(dataSet.get(position).getPlayerName());
-        viewHolder.txtprofileCountryName.setText(dataSet.get(position).getCountry());
-        viewHolder.txtPLayersAge.setText(dataSet.get(position).getCurrentAge());
-        viewHolder.txtProfileBorn.setText(dataSet.get(position).getBorn());
+        viewHolder.txtPlayerCountryName.setText(dataSet.get(position).getCountry());
+        viewHolder.txtPlayersAge.setText(dataSet.get(position).getCurrentAge());
+        viewHolder.txtPlayerBorn.setText(dataSet.get(position).getBorn());
         viewHolder.txtPlayerPlayersHeight.setText(dataSet.get(position).getHeight());
         viewHolder.txtPlayersPosition.setText(dataSet.get(position).getPosition());
-
-
 
         //For Player's Statistic
         viewHolder.txtAppsStatistic.setText(dataSet.get(position).getApps());
@@ -112,15 +103,11 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
         viewHolder.txtArialsWonStatistic.setText(dataSet.get(position).getArialWon());
         viewHolder.txtMotMStatistic.setText(dataSet.get(position).getMotM());
 
-
-
-
         String image = playerDetails.getmImageUrl();
         if (image !=null && !image.trim().equals("")) {
             Picasso.get()
                     .load(image).into(viewHolder.imageView);
         }
-
 
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,10 +119,7 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
                 context.startActivity(mainActivityIntent);
             }
         });
-
     }
-
-
     @Override
     public int getItemCount() {
         return dataSet.size();

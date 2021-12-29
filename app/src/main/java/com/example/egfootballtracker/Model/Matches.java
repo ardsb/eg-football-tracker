@@ -8,8 +8,6 @@ public class Matches implements Serializable {
     private String teamNameA,teamNameB;
     private String teamNameAScores,teamNameBScores,matchTime;
 
-
-
     public Matches(String id, String teamNameA, String teamNameB, String teamNameAScores
             , String teamNameBScores,String matchTime) {
         this.id = id;

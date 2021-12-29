@@ -1,5 +1,4 @@
 package com.example.egfootballtracker.Model;
-
 import java.io.Serializable;
 
 public class PlayerDetails implements Serializable {
@@ -39,11 +38,6 @@ public class PlayerDetails implements Serializable {
     private String arialWon;
 
     private String motM;
-
-
-
-
-
 
     public PlayerDetails(String id, String mImageUrl, String playerName, String currentAge,
                          String born, String country, String height, String position, String apps,

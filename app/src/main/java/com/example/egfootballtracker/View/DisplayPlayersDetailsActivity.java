@@ -39,7 +39,6 @@ public class DisplayPlayersDetailsActivity extends Activity {
 
     }
 
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -57,10 +56,12 @@ public class DisplayPlayersDetailsActivity extends Activity {
 
                 if (playerDetails.size() > 0) {
 
-                    PlayersProfileAdpater adapter = new PlayersProfileAdpater(DisplayPlayersDetailsActivity.this, playerDetails);
+                    PlayersProfileAdpater adapter = new PlayersProfileAdpater
+                            (DisplayPlayersDetailsActivity.this, playerDetails);
 
 
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(DisplayPlayersDetailsActivity.this);
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager
+                            (DisplayPlayersDetailsActivity.this);
                     recyclerView.setLayoutManager(mLayoutManager);
                     recyclerView.setAdapter(adapter);
                 }

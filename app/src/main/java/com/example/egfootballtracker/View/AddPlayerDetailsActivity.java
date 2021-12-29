@@ -42,12 +42,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             txtYelCardStatistic, txtRedCardStatistic, txtSpGStatistic,
             txtPSStatistic, txtArialsWonStatistic, txtMotMStatistic;//For player's Statistics
     ;
-
-
     Button addPlayerDetails, btnChooseFile;
-
-
-
 
     private String imageUploadUrl;
     private ProgressDialog uploadProgressDialog;
@@ -86,9 +81,6 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         txtArialsWonStatistic = findViewById(R.id.txtArialsWonStatistic);
         txtMotMStatistic = findViewById(R.id.txtMotMStatistic);
 
-
-
-
         uploadProgressDialog = new ProgressDialog(this);
         uploadProgressDialog.setTitle("Adding this player into to the system");
         uploadProgressDialog.setMessage("Please hold tight while we upload the players details");
@@ -105,15 +97,12 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             }
         });
 
-
         addPlayerDetails = findViewById(R.id.btnAdd);
         addPlayerDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 fileUploader();
-
-
             }
         });
 
@@ -129,7 +118,6 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         String PlayersHeight = txtPlayersHeight.getText().toString().trim();
         String PlayersPosition = txtPlayersPosition.getText().toString().trim();
 
-
         //For Player's Statistics
         String AppsStatistic = txtAppsStatistic.getText().toString().trim();
         String MinutesStatistic = txtMinutesStatistic.getText().toString().trim();
@@ -141,11 +129,6 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         String PSStatistic = txtPSStatistic.getText().toString().trim();
         String ArialsWonStatistic = txtArialsWonStatistic.getText().toString().trim();
         String MotMStatistic = txtMotMStatistic.getText().toString().trim();
-
-
-
-
-
 
         if
             //For Profile
@@ -235,16 +218,9 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "upload failed: "
                                     + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-
-
                     }
-
-
                 });
-
-
             }
-
 
         } else {
 

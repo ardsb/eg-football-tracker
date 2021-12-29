@@ -106,10 +106,6 @@ public class HomepageActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         int id = item.getItemId();
 
-
-
-
-
                         if (id == R.id.txtAddMatch) {
 
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
@@ -121,7 +117,6 @@ public class HomepageActivity extends AppCompatActivity {
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
                                     AddPlayerDetailsActivity.class);
                             startActivity(mainActivityIntent);
-
 
                         } else if (id == R.id.txtShowPlayerDetails) {
 //
@@ -146,10 +141,6 @@ public class HomepageActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
-//
-
-
     }
     private void getMatchNews() {
         ApiInterface apiInterface = ApiClientNews.getClient().create(ApiInterface.class);
@@ -163,8 +154,6 @@ public class HomepageActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body().getArticle().size() > 0) {
                     List<SportNews> News = response.body().getArticle();
-
-
                     NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout,
                             getApplicationContext());
 
@@ -174,20 +163,14 @@ public class HomepageActivity extends AppCompatActivity {
                     Toast.makeText(HomepageActivity.this, response.message(),
                             Toast.LENGTH_SHORT).show();
                 }
-
-
             }
 
             @Override
             public void onFailure(Call<SportNewsList> call, Throwable t) {
                 Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
-
-
             }
 
         });
-
-
     }
 
     @Override
@@ -226,14 +209,6 @@ public class HomepageActivity extends AppCompatActivity {
         });
     }
 
-
-
-
-
-
-
-
-//
     private void getMatchVideos() {
         ApiInterface apiInterface = ApiClientVideos.getClient().create(ApiInterface.class);
 
@@ -243,7 +218,6 @@ public class HomepageActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<SportVideosResponse> call,
                                    Response<SportVideosResponse> response) {
-
 
                 SportVideosResponse body = response.body();
                 if (response.isSuccessful() && body.getItem().size() > 0) {
@@ -256,32 +230,18 @@ public class HomepageActivity extends AppCompatActivity {
 
                     recyclerView3.setAdapter(adapter);
 
-
-//
-
-
                 } else {
                     Log.e(TAG, String.format("OnFailure: %s", response.message()));
                     Toast.makeText(HomepageActivity.this, response.message(),
                             Toast.LENGTH_SHORT).show();
                 }
-
-
             }
-
             @Override
             public void onFailure(Call<SportVideosResponse> call, Throwable t) {
                 Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
-
-
             }
-
         });
-
-
     }
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);

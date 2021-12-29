@@ -1,9 +1,6 @@
 package com.example.egfootballtracker.Model;
-
 import com.google.gson.annotations.SerializedName;
-
 public class SportNews {
-
     @SerializedName("author")
     public String author;
 

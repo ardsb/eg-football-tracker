@@ -20,7 +20,7 @@ public class LiveScoreAdapter extends RecyclerView.Adapter<LiveScoreAdapter.View
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder   {
-        private TextView teamNameA, teamNameB,teamNameAScores,teamNameBScores;
+        private TextView teamNameA, teamNameB,teamNameAScores,teamNameBScores,matchTime;
         private LinearLayout layout;
 
         public ViewHolder(View view) {
@@ -29,6 +29,7 @@ public class LiveScoreAdapter extends RecyclerView.Adapter<LiveScoreAdapter.View
             teamNameB = view.findViewById(R.id.txtTeamBScoreInput);
             teamNameAScores = view.findViewById(R.id.txtTeamAScoreOutput);
             teamNameBScores=view.findViewById(R.id.txtTeamBScoreOuput);
+            matchTime=view.findViewById(R.id.txtTimeOutput);
             layout = view.findViewById(R.id.matchesLayout);
 
         }
@@ -54,6 +55,7 @@ public class LiveScoreAdapter extends RecyclerView.Adapter<LiveScoreAdapter.View
         viewHolder.teamNameB.setText(dataSet.get(position).getTeamNameB());
         viewHolder.teamNameAScores.setText(dataSet.get(position).getTeamNameAScores());
         viewHolder.teamNameBScores.setText(dataSet.get(position).getTeamNameBScores());
+        viewHolder.matchTime.setText(dataSet.get(position).getMatchTime());
 
     }
     @Override

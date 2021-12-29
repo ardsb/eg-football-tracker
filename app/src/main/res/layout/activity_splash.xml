@@ -39,7 +39,6 @@
                 android:fontFamily="serif-monospace"
                 android:text="EG Football Tracker"
                 android:gravity="right"
-
                 android:textColor="@color/white"
                 android:textSize="50sp"
                 android:textStyle="bold|italic"
@@ -63,11 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"/>
-
-
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

@@ -31,23 +31,16 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-
-
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/brazil"
-
-                />
+                android:src="@drawable/brazil"/>
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/france"
-
-                />
-
+                android:src="@drawable/france"/>
 
         </LinearLayout>
 
@@ -58,9 +51,6 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
-
-
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -99,14 +89,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:text="TextView"
-                    tools:text=" Prince Warriors" />
+                    tools:text=" Colombo FC" />
 
                 <TextView
                     android:id="@+id/txtTeamAScoreOutput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    tools:text=" Prince Warriors" />
+                    tools:text=" 3" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,17 +111,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:text="TextView"
-                    tools:text=" Prince Warriors" />
+                    tools:text=" Badulla Warriors" />
 
                 <TextView
                     android:id="@+id/txtTeamBScoreOuput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    tools:text=" Prince Warriors" />
+                    tools:text="2" />
             </LinearLayout>
-
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

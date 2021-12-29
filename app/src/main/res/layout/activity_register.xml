@@ -20,14 +20,11 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="30dp"
-                >
+                android:layout_marginBottom="30dp">
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -51,8 +48,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="30dp"
-                >
+                android:layout_marginBottom="30dp">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_username"
@@ -81,6 +77,7 @@
                         android:layout_marginTop="20dp"
                         android:hint="Full name" />
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_Email"
                     android:layout_width="match_parent"
@@ -93,6 +90,7 @@
                         android:layout_marginTop="20dp"
                         android:hint="E-mail" />
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_Password"
                     android:layout_width="match_parent"
@@ -104,8 +102,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
-                        android:hint="Password" />
+                        android:hint="Password"/>
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,16 +121,10 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:background="?attr/colorSecondary"
-                        android:text="Register"
-                        />
+                        android:text="Register"/>
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
-
-
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

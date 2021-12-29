@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +43,6 @@
                     app:ignore="VectorDrawableCompat" />
 
                 <TextView
-
                     android:id="@+id/txtVideoTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,7 +53,6 @@
                     android:text="Video Name"
                     android:textSize="14sp" />
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"

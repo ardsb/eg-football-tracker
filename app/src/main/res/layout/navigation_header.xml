@@ -8,8 +8,6 @@
     android:layout_gravity=""
     android:background="?colorPrimary">
 
-
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgProfile"
         android:layout_width="130dp"

@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class RegisterActivity extends AppCompatActivity {
     Button login;
     TextView Email, Password;
-    Button exit;
     private FirebaseAuth mAuth;
     private String TAG = RegisterActivity.class.getSimpleName();
 
@@ -48,13 +47,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String password=Password.getText().toString();
 
                 signUpUser(email,password);
-                Toast.makeText(getApplicationContext(),"You have successfully Registered",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"You have successfully Registered"
+                        ,Toast.LENGTH_SHORT).show();
             }
         });
-
-//        signUpUser(email,password);
-//        signInUser(email,password);
-
 
     }
 
