@@ -28,7 +28,6 @@ public class PlayerStatisticActivity extends AppCompatActivity {
             txtMotMStatisticPassing; //For Player's Statistic
 
     DatabaseReference myRef;
-    Button btnDelete;
     CircleImageView imageView;
 
     
@@ -91,19 +90,6 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtArialsStatisticPassing.setText(playerDetails.getArialWon());
         txtMotMStatisticPassing.setText(playerDetails.getMotM());
 
-
-
-        btnDelete=findViewById(R.id.btnDelete);
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(PlayerStatisticActivity.this, "One player has deleted ",
-                        Toast.LENGTH_SHORT).show();
-                DatabaseReference dR = FirebaseDatabase.getInstance().getReference
-                        ("player-details").child(playerDetails.getId());
-                dR.removeValue();
-            }
-        });
 
     }
 

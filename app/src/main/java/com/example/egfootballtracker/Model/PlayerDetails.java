@@ -39,6 +39,8 @@ public class PlayerDetails implements Serializable {
 
     private String motM;
 
+    private String playerPerformance;
+
     public PlayerDetails(String id, String mImageUrl, String playerName, String currentAge,
                          String born, String country, String height, String position, String apps,
                          String minutes, String goals, String assist, String yelCard, String redCard,
@@ -61,6 +63,7 @@ public class PlayerDetails implements Serializable {
         this.pss = pss;
         this.arialWon = arialWon;
         this.motM = motM;
+
 
     }
 

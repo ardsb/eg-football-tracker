@@ -37,7 +37,7 @@
         android:layout_marginBottom="5dp"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/white"
-        android:text="Admin" />
+        android:text="Srilanka" />
 
 
 </LinearLayout>

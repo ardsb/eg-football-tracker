@@ -42,7 +42,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             txtYelCardStatistic, txtRedCardStatistic, txtSpGStatistic,
             txtPSStatistic, txtArialsWonStatistic, txtMotMStatistic;//For player's Statistics
     ;
-    Button addPlayerDetails, btnChooseFile;
+    Button addPlayerDetails, btnChooseFile, btnCalculatePerformance;
 
     private String imageUploadUrl;
     private ProgressDialog uploadProgressDialog;
@@ -81,6 +81,8 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         txtArialsWonStatistic = findViewById(R.id.txtArialsWonStatistic);
         txtMotMStatistic = findViewById(R.id.txtMotMStatistic);
 
+
+
         uploadProgressDialog = new ProgressDialog(this);
         uploadProgressDialog.setTitle("Adding this player into to the system");
         uploadProgressDialog.setMessage("Please hold tight while we upload the players details");
@@ -96,6 +98,16 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                 fileChoose();
             }
         });
+
+        btnCalculatePerformance=findViewById(R.id.btnCalculatePerformance);
+        btnCalculatePerformance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
 
         addPlayerDetails = findViewById(R.id.btnAdd);
         addPlayerDetails.setOnClickListener(new View.OnClickListener() {

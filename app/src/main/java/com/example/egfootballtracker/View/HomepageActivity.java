@@ -108,21 +108,24 @@ public class HomepageActivity extends AppCompatActivity {
 
                         if (id == R.id.txtAddMatch) {
 
+                            Toast.makeText(HomepageActivity.this,
+                                    "Statistic",
+                                    Toast.LENGTH_LONG).show();
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
-                                    AddMatchActivity.class);
+                                    AddPlayerDetailsActivity.class);
                             startActivity(mainActivityIntent);
 
                         } else if (id == R.id.txtAddPlayerDetails) {
 
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
-                                    AddPlayerDetailsActivity.class);
+                                    DisplayPlayersDetailsActivity.class);
                             startActivity(mainActivityIntent);
 
                         } else if (id == R.id.txtShowPlayerDetails) {
 //
-                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
-                                    DisplayPlayersDetailsActivity.class);
-                            startActivity(mainActivityIntent);
+                            Toast.makeText(HomepageActivity.this,
+                                    "About",
+                                    Toast.LENGTH_LONG).show();
 
                         }else if (id == R.id.txtLogout){
                             SharedPreferences.Editor editor= sharedPreferences.edit();
@@ -130,7 +133,7 @@ public class HomepageActivity extends AppCompatActivity {
                             editor.commit();
 
                             Toast.makeText(HomepageActivity.this,
-                                    "You have successfully logout from the Criclova system",
+                                    "You have successfully logout from the EG Football Tracker",
                                     Toast.LENGTH_LONG).show();
 
 
