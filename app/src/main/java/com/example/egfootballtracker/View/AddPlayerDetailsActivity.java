@@ -40,7 +40,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
 
     TextView txtAppsStatistic, txtMinutesStatistic, txtGoalsStaistic, txtAssistStatistic,
             txtYelCardStatistic, txtRedCardStatistic, txtSpGStatistic,
-            txtPSStatistic, txtArialsWonStatistic, txtMotMStatistic;//For player's Statistics
+            txtPSStatistic, txtArialsWonStatistic, txtMotMStatistic, txtPlayerPerfomanceStatistic;//For player's Statistics
     ;
     Button addPlayerDetails, btnChooseFile, btnCalculatePerformance;
 
@@ -80,6 +80,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         txtPSStatistic = findViewById(R.id.txtPSStatistic);
         txtArialsWonStatistic = findViewById(R.id.txtArialsWonStatistic);
         txtMotMStatistic = findViewById(R.id.txtMotMStatistic);
+        txtPlayerPerfomanceStatistic = findViewById(R.id.txtPlayerPerfomanceStatistic);
 
 
 
@@ -103,7 +104,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         btnCalculatePerformance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                playerPerformanceCalculation();
             }
         });
 
@@ -267,5 +268,52 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                 SpGStatistic, PSStatistic,ArialsWonStatistic,MotMStatistic);
 
         myRef.child(id).setValue(playerDetails);
+    }
+
+    public void playerPerformanceCalculation(){
+
+
+//
+        int m1,m2,m3,m4,m5,tot;
+
+        double avg;
+        String grade;
+        m1 = Integer.parseInt(txtAppsStatistic.getText().toString());
+        m2 = Integer.parseInt(txtMinutesStatistic.getText().toString());
+        m3 = Integer.parseInt(txtGoalsStaistic.getText().toString());
+
+        tot = m1 + m2 + m3;
+//        txtPlayerPerfomanceStatistic.setText(String.valueOf(tot));
+
+        m4 = Integer.parseInt(txtAppsStatistic.getText().toString());
+        m5 = Integer.parseInt(txtGoalsStaistic.getText().toString());
+        avg=m4/m5;
+        txtSpGStatistic.setText(String.valueOf(avg));
+
+        if(avg > 0)
+        {
+            txtPlayerPerfomanceStatistic.setText("A");
+        }
+        else if(avg > 6)
+        {
+            txtPlayerPerfomanceStatistic.setText("B");
+        }
+
+        else if(avg > 8)
+        {
+            txtPlayerPerfomanceStatistic.setText("C");
+        }
+
+
+        else if(avg > 10)
+        {
+            txtPlayerPerfomanceStatistic.setText("S");
+        }
+
+        else
+        {
+            txtPlayerPerfomanceStatistic.setText("Fail");
+        }
+
     }
 }
