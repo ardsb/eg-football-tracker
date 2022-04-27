@@ -272,47 +272,37 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
 
     public void playerPerformanceCalculation(){
 
-
-//
-        int m1,m2,m3,m4,m5,tot;
-
+        int AppsStatistic,GoalsStaistic;
         double avg;
-        String grade;
-        m1 = Integer.parseInt(txtAppsStatistic.getText().toString());
-        m2 = Integer.parseInt(txtMinutesStatistic.getText().toString());
-        m3 = Integer.parseInt(txtGoalsStaistic.getText().toString());
 
-        tot = m1 + m2 + m3;
-//        txtPlayerPerfomanceStatistic.setText(String.valueOf(tot));
-
-        m4 = Integer.parseInt(txtAppsStatistic.getText().toString());
-        m5 = Integer.parseInt(txtGoalsStaistic.getText().toString());
-        avg=m4/m5;
+        AppsStatistic = Integer.parseInt(txtAppsStatistic.getText().toString());
+        GoalsStaistic = Integer.parseInt(txtGoalsStaistic.getText().toString());
+        avg=GoalsStaistic/AppsStatistic;
         txtSpGStatistic.setText(String.valueOf(avg));
 
-        if(avg > 0)
+        if(avg >= 4)
         {
-            txtPlayerPerfomanceStatistic.setText("A");
+            txtPlayerPerfomanceStatistic.setText("Outstanding");
         }
-        else if(avg > 6)
+        else if(avg >= 2)
         {
-            txtPlayerPerfomanceStatistic.setText("B");
-        }
-
-        else if(avg > 8)
-        {
-            txtPlayerPerfomanceStatistic.setText("C");
+            txtPlayerPerfomanceStatistic.setText("Excellent");
         }
 
-
-        else if(avg > 10)
+        else if(avg >= 1)
         {
-            txtPlayerPerfomanceStatistic.setText("S");
+            txtPlayerPerfomanceStatistic.setText("Mediocre");
+        }
+
+
+        else if(avg >= 0.5)
+        {
+            txtPlayerPerfomanceStatistic.setText("Average");
         }
 
         else
         {
-            txtPlayerPerfomanceStatistic.setText("Fail");
+            txtPlayerPerfomanceStatistic.setText("Poor");
         }
 
     }
