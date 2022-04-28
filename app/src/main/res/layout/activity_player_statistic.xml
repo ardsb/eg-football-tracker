@@ -57,7 +57,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/txtPlayerPerfomanceStatistic"
+                                    android:id="@+id/txtPlayerPerformanceStatisticPassing"
                                     android:layout_width="140dp"
                                     android:layout_height="30dp"
                                     android:gravity="center"

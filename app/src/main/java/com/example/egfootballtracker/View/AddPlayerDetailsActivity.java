@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -40,9 +41,10 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
 
     TextView txtAppsStatistic, txtMinutesStatistic, txtGoalsStaistic, txtAssistStatistic,
             txtYelCardStatistic, txtRedCardStatistic, txtSpGStatistic,
-            txtPSStatistic, txtArialsWonStatistic, txtMotMStatistic, txtPlayerPerfomanceStatistic;//For player's Statistics
+            txtPSStatistic, txtArialsWonStatistic, txtMotMStatistic
+            ,txtPlayerPerfomanceStatistic;//For player's Statistics
     ;
-    Button addPlayerDetails, btnChooseFile, btnCalculatePerformance;
+    Button addPlayerDetails, btnChooseFile, btnCalculatePerformance,btnInfo;
 
     private String imageUploadUrl;
     private ProgressDialog uploadProgressDialog;
@@ -119,6 +121,14 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             }
         });
 
+        btnInfo=findViewById(R.id.btnInfo);
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showInfoDialog();
+            }
+        });
+
     }
 
     private void createPlayerOnFirebase() {
@@ -142,6 +152,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         String PSStatistic = txtPSStatistic.getText().toString().trim();
         String ArialsWonStatistic = txtArialsWonStatistic.getText().toString().trim();
         String MotMStatistic = txtMotMStatistic.getText().toString().trim();
+        String PlayerPerfomanceStatistic = txtPlayerPerfomanceStatistic.getText().toString().trim();
 
         if
             //For Profile
@@ -156,12 +167,13 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                 && !TextUtils.isEmpty(YelCardStatistic)
                 && !TextUtils.isEmpty(RedCardStatistic)
                 && !TextUtils.isEmpty(SpGStatistic) && !TextUtils.isEmpty(PSStatistic)
-                && !TextUtils.isEmpty(ArialsWonStatistic) && !TextUtils.isEmpty(MotMStatistic)){
+                && !TextUtils.isEmpty(ArialsWonStatistic) && !TextUtils.isEmpty(MotMStatistic) &&
+                !TextUtils.isEmpty(PlayerPerfomanceStatistic) ){
 
             addProfileDetails(PLayersName, PLayersAge, PLayersBorn, PlayingCountry,
                     PlayersHeight, PlayersPosition, AppsStatistic, MinutesStatistic,
                     GoalsStaistic, AssistStatistic, YelCardStatistic, RedCardStatistic,
-                    SpGStatistic, PSStatistic, ArialsWonStatistic, MotMStatistic);
+                    SpGStatistic, PSStatistic, ArialsWonStatistic, MotMStatistic,PlayerPerfomanceStatistic);
 
 
         } else {
@@ -258,14 +270,14 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                                   String MinutesStatistic, String GoalsStaistic, String AssistStatistic,
                                   String YelCardStatistic, String RedCardStatistic,
                                   String SpGStatistic, String PSStatistic,
-                                  String ArialsWonStatistic, String MotMStatistic) {
+                                  String ArialsWonStatistic, String MotMStatistic, String PlayerPerfomanceStatistic) {
 
 
         String id = myRef.push().getKey();
         PlayerDetails playerDetails = new PlayerDetails(id, imageUploadUrl, PLayersName, PLayersAge
                 , PLayersBorn, PlayingCountry, PlayersHeight, PlayersPosition, AppsStatistic
                 , MinutesStatistic,  GoalsStaistic, AssistStatistic, YelCardStatistic, RedCardStatistic,
-                SpGStatistic, PSStatistic,ArialsWonStatistic,MotMStatistic);
+                SpGStatistic, PSStatistic,ArialsWonStatistic,MotMStatistic,PlayerPerfomanceStatistic);
 
         myRef.child(id).setValue(playerDetails);
     }
@@ -280,30 +292,55 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         avg=GoalsStaistic/AppsStatistic;
         txtSpGStatistic.setText(String.valueOf(avg));
 
+
+
         if(avg >= 4)
         {
             txtPlayerPerfomanceStatistic.setText("Outstanding");
+            Toast.makeText(AddPlayerDetailsActivity.this,
+                    "Overall performance is Outstanding",
+                    Toast.LENGTH_LONG).show();
         }
         else if(avg >= 2)
         {
             txtPlayerPerfomanceStatistic.setText("Excellent");
+            Toast.makeText(AddPlayerDetailsActivity.this,
+                    "Overall performance is Excellent",
+                    Toast.LENGTH_LONG).show();
         }
 
         else if(avg >= 1)
         {
             txtPlayerPerfomanceStatistic.setText("Mediocre");
+            Toast.makeText(AddPlayerDetailsActivity.this,
+                    "Overall performance is Mediocre",
+                    Toast.LENGTH_LONG).show();
         }
 
 
         else if(avg >= 0.5)
         {
             txtPlayerPerfomanceStatistic.setText("Average");
+            Toast.makeText(AddPlayerDetailsActivity.this,
+                    "Overall performance is Average",
+                    Toast.LENGTH_LONG).show();
         }
 
         else
         {
             txtPlayerPerfomanceStatistic.setText("Poor");
+            Toast.makeText(AddPlayerDetailsActivity.this,
+                    "Overall performance is Poor",
+                    Toast.LENGTH_LONG).show();
         }
 
     }
+
+    void showInfoDialog() {
+        final Dialog dialog = new Dialog(AddPlayerDetailsActivity.this);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.activity_info_test);
+        dialog.show();
+    }
+
 }

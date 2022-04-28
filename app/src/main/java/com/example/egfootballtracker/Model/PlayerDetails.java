@@ -41,10 +41,11 @@ public class PlayerDetails implements Serializable {
 
     private String playerPerformance;
 
+
     public PlayerDetails(String id, String mImageUrl, String playerName, String currentAge,
                          String born, String country, String height, String position, String apps,
                          String minutes, String goals, String assist, String yelCard, String redCard,
-                         String spg, String pss, String arialWon, String motM) {
+                         String spg, String pss, String arialWon, String motM,String playerPerformance) {
         this.id = id;
         this.mImageUrl = mImageUrl;
         this.playerName = playerName;
@@ -63,6 +64,7 @@ public class PlayerDetails implements Serializable {
         this.pss = pss;
         this.arialWon = arialWon;
         this.motM = motM;
+        this.playerPerformance = playerPerformance;
 
 
     }
@@ -215,5 +217,11 @@ public class PlayerDetails implements Serializable {
         this.motM = motM;
     }
 
+    public String getPlayerPerformance() {
+        return playerPerformance;
+    }
 
+    public void setPlayerPerformance(String playerPerformance) {
+        this.playerPerformance = playerPerformance;
+    }
 }

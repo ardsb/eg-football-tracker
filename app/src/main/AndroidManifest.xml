@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EGFootballTracker">
         <activity
+            android:name=".View.InfoTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.InfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.LoginActivity"
             android:exported="false" />
         <activity

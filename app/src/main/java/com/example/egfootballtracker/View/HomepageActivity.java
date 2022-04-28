@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.example.egfootballtracker.Adapter.LiveScoreAdapter;
@@ -108,24 +110,20 @@ public class HomepageActivity extends AppCompatActivity {
 
                         if (id == R.id.txtAddMatch) {
 
-                            Toast.makeText(HomepageActivity.this,
-                                    "Statistic",
-                                    Toast.LENGTH_LONG).show();
+
+
+                        } else if (id == R.id.txtAddPlayerDetails) {
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
                                     AddPlayerDetailsActivity.class);
                             startActivity(mainActivityIntent);
 
-                        } else if (id == R.id.txtAddPlayerDetails) {
 
-                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
-                                    DisplayPlayersDetailsActivity.class);
-                            startActivity(mainActivityIntent);
 
                         } else if (id == R.id.txtShowPlayerDetails) {
 //
-                            Toast.makeText(HomepageActivity.this,
-                                    "About",
-                                    Toast.LENGTH_LONG).show();
+                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                                    DisplayPlayersDetailsActivity.class);
+                            startActivity(mainActivityIntent);
 
                         }else if (id == R.id.txtLogout){
                             SharedPreferences.Editor editor= sharedPreferences.edit();
@@ -249,4 +247,6 @@ public class HomepageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
+
+
 }

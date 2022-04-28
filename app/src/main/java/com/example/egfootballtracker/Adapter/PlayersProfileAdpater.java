@@ -33,7 +33,7 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
 
         TextView txtAppsStatistic,txtMinutesStatistic,txtGoalsStatistic,txtAssistStatistic,
                 txtYelCardStatistic,txtRedCardStatistic,txtSpGStatistic,txtPSStatistic,
-                txtArialsWonStatistic,txtMotMStatistic;
+                txtArialsWonStatistic,txtMotMStatistic,txtProfilePerformance;
 
        public CircleImageView imageView;
 
@@ -61,6 +61,7 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
             txtPSStatistic=view.findViewById(R.id.txtDisplayingProfilePssStatistic);
             txtArialsWonStatistic=view.findViewById(R.id.txtDisplayingProfileArialWonStatistic);
             txtMotMStatistic=view.findViewById(R.id.txtDisplayingProfileMotMStatistic);
+            txtProfilePerformance=view.findViewById(R.id.txtDisplayingProfilePerformance);
         }
     }
 
@@ -102,6 +103,7 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
         viewHolder.txtPSStatistic.setText(dataSet.get(position).getPss());
         viewHolder.txtArialsWonStatistic.setText(dataSet.get(position).getArialWon());
         viewHolder.txtMotMStatistic.setText(dataSet.get(position).getMotM());
+        viewHolder.txtProfilePerformance.setText(dataSet.get(position).getPlayerPerformance());
 
         String image = playerDetails.getmImageUrl();
         if (image !=null && !image.trim().equals("")) {

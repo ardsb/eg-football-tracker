@@ -60,6 +60,16 @@
                         app:icon="@drawable/ic_baseline_add_photo_alternate_24">
 
                     </Button>
+                    <Button
+                        android:id="@+id/btnInfo"
+                        android:layout_marginLeft="110dp"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:text="Info "
+                        app:icon="@drawable/ic_baseline_info_24">
+
+                    </Button>
+
                 </LinearLayout>
 
 
@@ -216,6 +226,7 @@
                                         android:id="@+id/txtAppsStatistic"
                                         android:layout_width="match_parent"
                                         android:text="test123"
+                                        android:inputType="numberDecimal"
                                         android:layout_height="wrap_content"
                                         android:background="?android:colorBackground"
                                         android:hint="AppsS" />
@@ -234,9 +245,10 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="20dp"
                                         android:text="test123"
+                                        android:inputType="numberDecimal"
                                         android:background="?android:colorBackground"
                                         android:hint="Minutes"
-                                        android:inputType="none" />
+                                       />
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
@@ -249,6 +261,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="20dp"
                                         android:text="test123"
+                                        android:inputType="numberDecimal"
                                         android:background="?android:colorBackground"
                                         android:hint="Goals" />
 
@@ -262,6 +275,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="test123"
+                                        android:inputType="numberDecimal"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
                                         android:hint="Assist" />
@@ -276,6 +290,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="test123"
+                                        android:inputType="numberDecimal"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
                                         android:hint="Yellow Card" />
@@ -291,9 +306,9 @@
                                         android:layout_height="wrap_content"
                                         android:background="?android:colorBackground"
                                         android:hint="Red Card"
+                                        android:inputType="numberDecimal"
                                         android:text="test123"
-                                        android:layout_marginTop="20dp"
-                                        android:inputType="none" />
+                                        android:layout_marginTop="20dp" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
@@ -305,6 +320,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="test123"
+                                        android:inputType="numberDecimal"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
                                         android:hint="SpG" />
@@ -333,6 +349,8 @@
                                         android:id="@+id/txtArialsWonStatistic"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:inputType="numberDecimal"
+
                                         android:text="test123"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
@@ -348,29 +366,33 @@
                                         android:id="@+id/txtMotMStatistic"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:inputType="numberDecimal"
                                         android:text="test123"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
                                         android:hint="Man od the Match" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                                <LinearLayout
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/input_layout_PlayerPerfomanceStatistic"
                                     android:layout_width="match_parent"
-                                    android:layout_height="30dp">
+                                    android:layout_height="wrap_content">
 
-
-                                    <TextView
+                                    <EditText
                                         android:id="@+id/txtPlayerPerfomanceStatistic"
                                         android:layout_width="match_parent"
-                                        android:layout_height="30dp"
-                                        android:gravity="center"
-                                        android:text="Perfomance"
-                                        android:textSize="16sp"
-                                        android:textStyle="bold" />
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Performance"
+                                        android:text=""
+                                        android:editable="false"
+                                        android:textColor="@color/black" />
 
-                                </LinearLayout>
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
                             </LinearLayout>
 
                         </LinearLayout>
@@ -392,7 +414,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -406,7 +427,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center"
                         android:background="?attr/colorSecondary"
-                        android:text="Calculate Performance" />
+                        android:text="Calculate The Performance" />
                     <Button
                         android:id="@+id/btnAdd"
                         android:layout_width="match_parent"

@@ -25,7 +25,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
     TextView txtAppsStatisticPassing,txtMinutesStatisticPassing,txtGoalsStatisticPassing,
             txtAssistStatisticPassing, txtYelCardStatisticPassing,txtRedCardStatisticPassing,
             txtSpGStatisticPassing,txtPSSStatisticPassing,txtArialsStatisticPassing,
-            txtMotMStatisticPassing; //For Player's Statistic
+            txtMotMStatisticPassing,txtPlayerPerformanceStatisticPassing; //For Player's Statistic
 
     DatabaseReference myRef;
     CircleImageView imageView;
@@ -77,6 +77,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtPSSStatisticPassing = findViewById(R.id.txtPSSStatisticPassing);
         txtArialsStatisticPassing=findViewById(R.id.txtArialsStatisticPassing);
         txtMotMStatisticPassing=findViewById(R.id.txtMotMStatisticPassing);
+        txtPlayerPerformanceStatisticPassing=findViewById(R.id.txtPlayerPerformanceStatisticPassing);
 
 
         txtAppsStatisticPassing.setText(playerDetails.getApps());
@@ -89,6 +90,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtPSSStatisticPassing.setText(playerDetails.getPss());
         txtArialsStatisticPassing.setText(playerDetails.getArialWon());
         txtMotMStatisticPassing.setText(playerDetails.getMotM());
+        txtPlayerPerformanceStatisticPassing.setText(playerDetails.getPlayerPerformance());
 
 
     }
