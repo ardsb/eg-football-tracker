@@ -339,7 +339,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
     void showInfoDialog() {
         final Dialog dialog = new Dialog(AddPlayerDetailsActivity.this);
         dialog.setCancelable(true);
-        dialog.setContentView(R.layout.activity_info_test);
+        dialog.setContentView(R.layout.activity_info);
         dialog.show();
     }
 
