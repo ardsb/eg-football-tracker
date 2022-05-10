@@ -110,17 +110,19 @@ public class HomepageActivity extends AppCompatActivity {
 
                         if (id == R.id.txtAddMatch) {
 
-
+                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                                    AddMatchActivity.class);
+                            startActivity(mainActivityIntent);
 
                         } else if (id == R.id.txtAddPlayerDetails) {
+
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
                                     AddPlayerDetailsActivity.class);
                             startActivity(mainActivityIntent);
 
-
-
                         } else if (id == R.id.txtShowPlayerDetails) {
-//
+
+
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
                                     DisplayPlayersDetailsActivity.class);
                             startActivity(mainActivityIntent);

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:fontFamily="@font/holtwood_one_sc"
-        android:text="Select Your Account"
+        android:text="Select A Player"
         android:textAllCaps="true"
         android:textSize="25sp"
         android:textStyle="bold"
