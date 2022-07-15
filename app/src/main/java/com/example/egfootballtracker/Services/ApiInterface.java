@@ -2,8 +2,11 @@ package com.example.egfootballtracker.Services;
 
 
 
+import com.example.egfootballtracker.Model.PlayerDetailsNew;
 import com.example.egfootballtracker.Model.SportNewsList;
 import com.example.egfootballtracker.Model.SportVideosResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -18,4 +21,7 @@ public interface ApiInterface {
     Call<SportVideosResponse> getMatchVideos(@Query("key") String key, @Query("channelId")
             String chId, @Query("part") String part);
 
+
+    @GET("players")
+    Call<List<PlayerDetailsNew>> getPlayerDetails();
 }

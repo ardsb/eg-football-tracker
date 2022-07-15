@@ -59,7 +59,7 @@ public class HomepageActivity extends AppCompatActivity {
     private final static String part = "snippet,id";
     DatabaseReference myRef;
     List<Matches> matches;
-    RecyclerView recyclerView, recyclerView2, recyclerView3;
+    RecyclerView recyclerViewScores, recyclerViewNewsMore, recyclerViewVideos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +70,21 @@ public class HomepageActivity extends AppCompatActivity {
         myRef = database.getReference("Match Scores");//Database name
 
 
-        recyclerView = findViewById(R.id.recycler);
+        recyclerViewScores = findViewById(R.id.recycler);
         matches = new ArrayList<>();
         SnapHelper helper = new LinearSnapHelper();
-        helper.attachToRecyclerView(recyclerView);
+        helper.attachToRecyclerView(recyclerViewScores);
 
 
-        recyclerView2 = findViewById(R.id.recycler2);
+        recyclerViewNewsMore = findViewById(R.id.recycler2);
         SnapHelper helper2 = new LinearSnapHelper();
-        helper2.attachToRecyclerView(recyclerView2);
+        helper2.attachToRecyclerView(recyclerViewNewsMore);
 
         getMatchNews();
 
-        recyclerView3 = findViewById(R.id.recycler3);
+        recyclerViewVideos = findViewById(R.id.recycler3);
         SnapHelper helper3 = new LinearSnapHelper();
-        helper3.attachToRecyclerView(recyclerView3);
+        helper3.attachToRecyclerView(recyclerViewVideos);
 
         getMatchVideos();
 
@@ -160,7 +160,7 @@ public class HomepageActivity extends AppCompatActivity {
                     NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout,
                             getApplicationContext());
 
-                    recyclerView2.setAdapter(adapter);
+                    recyclerViewNewsMore.setAdapter(adapter);
 
                 } else {
                     Toast.makeText(HomepageActivity.this, response.message(),
@@ -200,7 +200,7 @@ public class HomepageActivity extends AppCompatActivity {
                             (HomepageActivity.this, matches);
 
 
-                    recyclerView.setAdapter(adapter);
+                    recyclerViewScores.setAdapter(adapter);
                 }
             }
 
@@ -231,7 +231,7 @@ public class HomepageActivity extends AppCompatActivity {
                     VideosAdapter adapter = new VideosAdapter(videos, R.layout.videos_layout,
                             getApplicationContext());
 
-                    recyclerView3.setAdapter(adapter);
+                    recyclerViewVideos.setAdapter(adapter);
 
                 } else {
                     Log.e(TAG, String.format("OnFailure: %s", response.message()));

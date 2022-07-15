@@ -289,7 +289,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
 
         AppsStatistic = Integer.parseInt(txtAppsStatistic.getText().toString());
         GoalsStaistic = Integer.parseInt(txtGoalsStaistic.getText().toString());
-        avg=AppsStatistic/GoalsStaistic;
+        avg=GoalsStaistic/AppsStatistic;
         txtSpGStatistic.setText(String.valueOf(avg));
 
 

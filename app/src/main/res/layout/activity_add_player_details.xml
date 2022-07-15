@@ -108,7 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="test123"
+
                         android:background="?android:colorBackground"
                         android:hint="Age"
                         android:inputType="none" />
@@ -123,7 +123,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="test123"
                         android:background="?android:colorBackground"
                         android:hint="Born" />
 
@@ -138,7 +137,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="test123"
                         android:background="?android:colorBackground"
                         android:hint="Country" />
 
@@ -153,7 +151,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="test123"
                         android:background="?android:colorBackground"
                         android:hint="Height" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -168,7 +165,6 @@
                         android:id="@+id/txtPlayersPosition"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="test123"
 
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
@@ -225,7 +221,6 @@
                                     <EditText
                                         android:id="@+id/txtAppsStatistic"
                                         android:layout_width="match_parent"
-                                        android:text="test123"
                                         android:inputType="numberDecimal"
                                         android:layout_height="wrap_content"
                                         android:background="?android:colorBackground"
@@ -244,7 +239,6 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="20dp"
-                                        android:text="test123"
                                         android:inputType="numberDecimal"
                                         android:background="?android:colorBackground"
                                         android:hint="Minutes"
@@ -260,7 +254,6 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="20dp"
-                                        android:text="test123"
                                         android:inputType="numberDecimal"
                                         android:background="?android:colorBackground"
                                         android:hint="Goals" />
@@ -274,7 +267,6 @@
                                         android:id="@+id/txtAssistStatistic"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="test123"
                                         android:inputType="numberDecimal"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
@@ -289,7 +281,6 @@
                                         android:id="@+id/txtYelCardStatistic"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="test123"
                                         android:inputType="numberDecimal"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
@@ -307,7 +298,6 @@
                                         android:background="?android:colorBackground"
                                         android:hint="Red Card"
                                         android:inputType="numberDecimal"
-                                        android:text="test123"
                                         android:layout_marginTop="20dp" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -319,9 +309,9 @@
                                         android:id="@+id/txtSpGStatistic"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="test123"
                                         android:inputType="numberDecimal"
                                         android:layout_marginTop="20dp"
+                                        android:editable="false"
                                         android:background="?android:colorBackground"
                                         android:hint="SpG" />
 
@@ -333,7 +323,6 @@
                                     <EditText
                                         android:id="@+id/txtPSStatistic"
                                         android:layout_width="match_parent"
-                                        android:text="test123"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
@@ -351,7 +340,6 @@
                                         android:layout_height="wrap_content"
                                         android:inputType="numberDecimal"
 
-                                        android:text="test123"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
                                         android:hint="Arials WonS" />
@@ -367,7 +355,6 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:inputType="numberDecimal"
-                                        android:text="test123"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
                                         android:hint="Man od the Match" />
