@@ -9,7 +9,9 @@ import com.example.egfootballtracker.Model.SportVideosResponse;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -21,7 +23,10 @@ public interface ApiInterface {
     Call<SportVideosResponse> getMatchVideos(@Query("key") String key, @Query("channelId")
             String chId, @Query("part") String part);
 
-
     @GET("players")
     Call<List<PlayerDetailsNew>> getPlayerDetails();
+
+    @POST("players")
+    Call<PlayerDetailsNew>setPlayerDetails(@Body PlayerDetailsNew playerDetailsNew);
+
 }

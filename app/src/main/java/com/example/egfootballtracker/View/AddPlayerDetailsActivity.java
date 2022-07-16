@@ -19,8 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.egfootballtracker.Model.PlayerDetails;
+import com.example.egfootballtracker.Model.PlayerDetailsNew;
 import com.example.egfootballtracker.R;
 
+import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -29,12 +31,20 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddPlayerDetailsActivity extends AppCompatActivity {
     DatabaseReference myRef;
     CircleImageView imageViewProfile;
     StorageReference storageRef;
+    TextView responseTV;
 
     TextView txtPLayersName, txtPLayersAge, txtPLayersBorn, txtPlayingCountry, txtPlayersHeight,
             txtPlayersPosition;//For Profile
@@ -68,7 +78,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         txtPLayersBorn = findViewById(R.id.txtPLayersBorn);
         txtPlayingCountry = findViewById(R.id.txtPlayersCountry);
         txtPlayersHeight = findViewById(R.id.txtPlayersHeight);
-        txtPlayersPosition = findViewById(R.id.txtPlayersPosition);
+        responseTV = findViewById(R.id.txtPlayersPosition);
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
         //For PLayer's Statistics
@@ -83,7 +93,6 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         txtArialsWonStatistic = findViewById(R.id.txtArialsWonStatistic);
         txtMotMStatistic = findViewById(R.id.txtMotMStatistic);
         txtPlayerPerfomanceStatistic = findViewById(R.id.txtPlayerPerfomanceStatistic);
-
 
 
         uploadProgressDialog = new ProgressDialog(this);
@@ -102,7 +111,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             }
         });
 
-        btnCalculatePerformance=findViewById(R.id.btnCalculatePerformance);
+        btnCalculatePerformance = findViewById(R.id.btnCalculatePerformance);
         btnCalculatePerformance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,25 +120,80 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         });
 
 
-
         addPlayerDetails = findViewById(R.id.btnAdd);
         addPlayerDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                fileUploader();
+                // validating if the text field is empty or not.
+                if (txtPLayersName.getText().toString().isEmpty() && txtPLayersAge.getText().toString().isEmpty()) {
+                    Toast.makeText(AddPlayerDetailsActivity.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // calling a method to post the data and passing our name and job.
+                postData(txtPLayersName.getText().toString(), txtPLayersAge.getText().toString());
             }
         });
-
-        btnInfo=findViewById(R.id.btnInfo);
-        btnInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInfoDialog();
-            }
-        });
-
     }
+
+        private void postData(String PLayersName, String PlayerAge){
+
+            // below line is for displaying our progress bar.
+//            loadingPB.setVisibility(View.VISIBLE);
+
+            // on below line we are creating a retrofit
+            // builder and passing our base url
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://10.0.3.2:8080/api/")
+                    // as we are sending data in json format so
+                    // we have to add Gson converter factory
+                    .addConverterFactory(GsonConverterFactory.create())
+                    // at last we are building our retrofit builder.
+                    .build();
+            // below line is to create an instance for our retrofit api class.
+            ApiInterface retrofitAPI = retrofit.create(ApiInterface.class);
+
+            // passing data from our text fields to our modal class.
+            PlayerDetailsNew playerDetailsNew = new PlayerDetailsNew(PLayersName, PlayerAge);
+
+            // calling a method to create a post and passing our modal class.
+            Call<PlayerDetailsNew> call = retrofitAPI.setPlayerDetails(playerDetailsNew);
+
+            // on below line we are executing our method.
+            call.enqueue(new Callback<PlayerDetailsNew>() {
+                @Override
+                public void onResponse(Call<PlayerDetailsNew> call, Response<PlayerDetailsNew> response) {
+                    // this method is called when we get response from our api.
+if(response.isSuccessful()){
+    Toast.makeText(AddPlayerDetailsActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
+
+}else {
+    Toast.makeText(AddPlayerDetailsActivity.this, "Request Fail", Toast.LENGTH_SHORT).show();
+
+}
+
+
+
+
+                }
+
+                @Override
+                public void onFailure(Call<PlayerDetailsNew> call, Throwable t) {
+                    // setting text to our text view when
+                    // we get error response from API.
+                    responseTV.setText("Error found is : " + t.getMessage());
+                }
+            });
+        }
+
+//        btnInfo=findViewById(R.id.btnInfo);
+//        btnInfo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showInfoDialog();
+//            }
+//        });
+
+//    }
 
     private void createPlayerOnFirebase() {
 

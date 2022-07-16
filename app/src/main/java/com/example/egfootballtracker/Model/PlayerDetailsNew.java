@@ -37,6 +37,12 @@ public class PlayerDetailsNew {
 
     private String playerPerformance;
 
+
+    public PlayerDetailsNew(String playerName, String playerAge) {
+        this.playerName = playerName;
+        this.playerAge = playerAge;
+    }
+
     public String getId() {
         return id;
     }
