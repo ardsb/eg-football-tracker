@@ -78,7 +78,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         txtPLayersBorn = findViewById(R.id.txtPLayersBorn);
         txtPlayingCountry = findViewById(R.id.txtPlayersCountry);
         txtPlayersHeight = findViewById(R.id.txtPlayersHeight);
-        responseTV = findViewById(R.id.txtPlayersPosition);
+        txtPlayersPosition = findViewById(R.id.txtPlayersPosition);
         imageViewProfile = findViewById(R.id.imageViewProfile);
 
         //For PLayer's Statistics
@@ -125,75 +125,105 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // validating if the text field is empty or not.
-                if (txtPLayersName.getText().toString().isEmpty() && txtPLayersAge.getText().toString().isEmpty()) {
-                    Toast.makeText(AddPlayerDetailsActivity.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
+
+                if (txtPLayersName.getText().toString().isEmpty() ||
+                        txtPLayersAge.getText().toString().isEmpty() ||
+                        txtPLayersBorn.getText().toString().isEmpty() ||
+                        txtPlayingCountry.getText().toString().isEmpty() ||
+                        txtPlayersHeight.getText().toString().isEmpty() ||
+                        txtPlayersPosition.getText().toString().isEmpty() ||
+
+                        //For Player's Statistics
+                        txtAppsStatistic.getText().toString().isEmpty() ||
+                        txtMinutesStatistic.getText().toString().isEmpty() ||
+                        txtGoalsStaistic.getText().toString().isEmpty() ||
+                        txtAssistStatistic.getText().toString().isEmpty() ||
+                        txtYelCardStatistic.getText().toString().isEmpty() ||
+                        txtRedCardStatistic.getText().toString().isEmpty() ||
+                        txtSpGStatistic.getText().toString().isEmpty() ||
+                        txtPSStatistic.getText().toString().isEmpty() ||
+                        txtArialsWonStatistic.getText().toString().isEmpty() ||
+                        txtMotMStatistic.getText().toString().isEmpty() ||
+                        txtPlayerPerfomanceStatistic.getText().toString().isEmpty()) {
+                    Toast.makeText(AddPlayerDetailsActivity.this,
+                            "Please enter both the values", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // calling a method to post the data and passing our name and job.
-                postData(txtPLayersName.getText().toString(), txtPLayersAge.getText().toString());
+
+                postData(txtPLayersName.getText().toString().trim(),
+                        txtPLayersAge.getText().toString().trim(),
+                        txtPLayersBorn.getText().toString().trim(),
+                        txtPlayingCountry.getText().toString().trim(),
+                        txtPlayersHeight.getText().toString().trim(),
+                        txtPlayersPosition.getText().toString().trim(),
+
+                //For Player's Statistics
+                        txtAppsStatistic.getText().toString().trim(),
+                        txtMinutesStatistic.getText().toString().trim(),
+                        txtGoalsStaistic.getText().toString().trim(),
+                        txtAssistStatistic.getText().toString().trim(),
+                        txtYelCardStatistic.getText().toString().trim(),
+                        txtRedCardStatistic.getText().toString().trim(),
+                        txtSpGStatistic.getText().toString().trim(),
+                        txtPSStatistic.getText().toString().trim(),
+                        txtArialsWonStatistic.getText().toString().trim(),
+                        txtMotMStatistic.getText().toString().trim(),
+                        txtPlayerPerfomanceStatistic.getText().toString().trim());
+
+            }
+
+        });
+
+        btnInfo=findViewById(R.id.btnInfo);
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showInfoDialog();
             }
         });
     }
 
-        private void postData(String PLayersName, String PlayerAge){
+        private void postData(String PLayersName, String PlayerAge, String PlayerBorn,
+                              String PlayersCountry, String PlayersHeight, String PlayersPosition,
+                              String PlayersApps, String PlayersMinutes, String PlayersGoals,
+                              String PlayersAssist, String PlayersYelCard, String PlayersRedCard,
+                              String PlayerSpg, String PlayersPS, String PlayersArialsWon,
+                              String PlayersMotM,String PlayersPerformance) {
 
-            // below line is for displaying our progress bar.
-//            loadingPB.setVisibility(View.VISIBLE);
 
-            // on below line we are creating a retrofit
-            // builder and passing our base url
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("http://10.0.3.2:8080/api/")
-                    // as we are sending data in json format so
-                    // we have to add Gson converter factory
                     .addConverterFactory(GsonConverterFactory.create())
-                    // at last we are building our retrofit builder.
                     .build();
-            // below line is to create an instance for our retrofit api class.
+
             ApiInterface retrofitAPI = retrofit.create(ApiInterface.class);
 
-            // passing data from our text fields to our modal class.
-            PlayerDetailsNew playerDetailsNew = new PlayerDetailsNew(PLayersName, PlayerAge);
+            PlayerDetailsNew playerDetailsNew = new PlayerDetailsNew(PLayersName, PlayerAge,
+                    PlayerBorn,PlayersCountry,PlayersHeight,PlayersPosition,PlayersApps,PlayersMinutes,PlayersGoals,
+                    PlayersAssist,PlayersYelCard,PlayersRedCard,PlayerSpg,PlayersPS,PlayersArialsWon,
+                    PlayersMotM,PlayersPerformance);
 
-            // calling a method to create a post and passing our modal class.
             Call<PlayerDetailsNew> call = retrofitAPI.setPlayerDetails(playerDetailsNew);
 
-            // on below line we are executing our method.
             call.enqueue(new Callback<PlayerDetailsNew>() {
                 @Override
                 public void onResponse(Call<PlayerDetailsNew> call, Response<PlayerDetailsNew> response) {
-                    // this method is called when we get response from our api.
-if(response.isSuccessful()){
-    Toast.makeText(AddPlayerDetailsActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
 
-}else {
-    Toast.makeText(AddPlayerDetailsActivity.this, "Request Fail", Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful()) {
+                        Toast.makeText(AddPlayerDetailsActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(AddPlayerDetailsActivity.this, "Request Fail", Toast.LENGTH_SHORT).show();
 
-}
-
-
-
-
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<PlayerDetailsNew> call, Throwable t) {
-                    // setting text to our text view when
-                    // we get error response from API.
                     responseTV.setText("Error found is : " + t.getMessage());
                 }
             });
-        }
 
-//        btnInfo=findViewById(R.id.btnInfo);
-//        btnInfo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showInfoDialog();
-//            }
-//        });
-
-//    }
+    }
 
     private void createPlayerOnFirebase() {
 

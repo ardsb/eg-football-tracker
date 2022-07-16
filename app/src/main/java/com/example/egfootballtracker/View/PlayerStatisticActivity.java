@@ -9,12 +9,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.egfootballtracker.Model.PlayerDetails;
+import com.example.egfootballtracker.Model.PlayerDetailsNew;
 import com.example.egfootballtracker.R;
+import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PlayerStatisticActivity extends AppCompatActivity {
 
@@ -30,6 +35,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
     DatabaseReference myRef;
     Button btnDelete;
     CircleImageView imageView;
+    ApiInterface apiInterface;
 
     
     @Override
@@ -40,7 +46,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("player-details");
 
-        PlayerDetails playerDetails = (PlayerDetails) getIntent().getSerializableExtra
+        PlayerDetailsNew playerDetails = (PlayerDetailsNew) getIntent().getSerializableExtra
                 ("Player Details");
 
 
@@ -55,16 +61,16 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         imageView=findViewById(R.id.imgProfileDisplayListStatistic);
 
         txtPlayerNameStatistic.setText(playerDetails.getPlayerName());
-        txtPlayerAgeStatistic.setText(playerDetails.getCurrentAge());
-        txtPlayerBornStatistic.setText(playerDetails.getBorn());
-        txtPlayerCountryStatistic.setText(playerDetails.getCountry());
-        txtPlayerPositionStatistic.setText(playerDetails.getPosition());
-        txtPlayerHeightStatistic.setText(playerDetails.getHeight());
-        Picasso.get()
-                .load(playerDetails.getmImageUrl())
-                .fit()
-                .centerCrop()
-                .into(imageView);
+        txtPlayerAgeStatistic.setText(playerDetails.getPlayerAge());
+        txtPlayerBornStatistic.setText(playerDetails.getPlayerBorn());
+        txtPlayerCountryStatistic.setText(playerDetails.getPlayerCountry());
+        txtPlayerPositionStatistic.setText(playerDetails.getPlayerPosition());
+        txtPlayerHeightStatistic.setText(playerDetails.getPlayerHeight());
+//        Picasso.get()
+//                .load(playerDetails.getmImageUrl())
+//                .fit()
+//                .centerCrop()
+//                .into(imageView);
 
 
         //For Player's Statistic
@@ -81,32 +87,20 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtPlayerPerformanceStatisticPassing=findViewById(R.id.txtPlayerPerformanceStatisticPassing);
 
 
-        txtAppsStatisticPassing.setText(playerDetails.getApps());
-        txtMinutesStatisticPassing.setText(playerDetails.getMinutes());
-        txtGoalsStatisticPassing.setText(playerDetails.getGoals());
-        txtAssistStatisticPassing.setText(playerDetails.getAssist());
-        txtYelCardStatisticPassing.setText(playerDetails.getYelCard());
-        txtRedCardStatisticPassing.setText(playerDetails.getRedCard());
-        txtSpGStatisticPassing.setText(playerDetails.getSpg());
-        txtPSSStatisticPassing.setText(playerDetails.getPss());
-        txtArialsStatisticPassing.setText(playerDetails.getArialWon());
-        txtMotMStatisticPassing.setText(playerDetails.getMotM());
+        txtAppsStatisticPassing.setText(playerDetails.getPlayerApps());
+        txtMinutesStatisticPassing.setText(playerDetails.getPlayerPlayedMinutes());
+        txtGoalsStatisticPassing.setText(playerDetails.getPlayerGoals());
+        txtAssistStatisticPassing.setText(playerDetails.getPlayerAssist());
+        txtYelCardStatisticPassing.setText(playerDetails.getPlayerYellowCard());
+        txtRedCardStatisticPassing.setText(playerDetails.getPlayerRedCard());
+        txtSpGStatisticPassing.setText(playerDetails.getPlayerSpg());
+        txtPSSStatisticPassing.setText(playerDetails.getPlayerPs());
+        txtArialsStatisticPassing.setText(playerDetails.getPlayerArialWon());
+        txtMotMStatisticPassing.setText(playerDetails.getPlayerMom());
         txtPlayerPerformanceStatisticPassing.setText(playerDetails.getPlayerPerformance());
 
 
-        btnDelete=findViewById(R.id.btnDelete);
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(PlayerStatisticActivity.this,"One player has deleted",
-                        Toast.LENGTH_SHORT).show();
-                DatabaseReference dR = FirebaseDatabase.getInstance().
-                        getReference("player-details").child(playerDetails.getId());
-                dR.removeValue();
-                finish();
 
-            }
-        });
 
     }
 

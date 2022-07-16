@@ -357,7 +357,7 @@
                                         android:inputType="numberDecimal"
                                         android:layout_marginTop="20dp"
                                         android:background="?android:colorBackground"
-                                        android:hint="Man od the Match" />
+                                        android:hint="Man of the Match" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
                                 <com.google.android.material.textfield.TextInputLayout

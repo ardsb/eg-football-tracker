@@ -1,6 +1,8 @@
 package com.example.egfootballtracker.Model;
 
-public class PlayerDetailsNew {
+import java.io.Serializable;
+
+public class PlayerDetailsNew implements Serializable {
     private String id;
 
     private String playerName;
@@ -38,9 +40,29 @@ public class PlayerDetailsNew {
     private String playerPerformance;
 
 
-    public PlayerDetailsNew(String playerName, String playerAge) {
+    public PlayerDetailsNew(String playerName, String playerAge, String playerBorn, String playerCountry,
+                            String playerHeight, String playerPosition, String playerApps,
+                            String playerPlayedMinutes, String playerGoals, String playerAssist,
+                            String playerYellowCard, String playerRedCard,
+                            String playerSpg, String playerPs, String playerArialWon, String playerMom,
+                            String playerPerformance) {
         this.playerName = playerName;
         this.playerAge = playerAge;
+        this.playerBorn = playerBorn;
+        this.playerCountry = playerCountry;
+        this.playerHeight = playerHeight;
+        this.playerPosition = playerPosition;
+        this.playerApps = playerApps;
+        this.playerPlayedMinutes = playerPlayedMinutes;
+        this.playerGoals = playerGoals;
+        this.playerAssist = playerAssist;
+        this.playerYellowCard = playerYellowCard;
+        this.playerRedCard = playerRedCard;
+        this.playerSpg = playerSpg;
+        this.playerPs = playerPs;
+        this.playerArialWon = playerArialWon;
+        this.playerMom = playerMom;
+        this.playerPerformance = playerPerformance;
     }
 
     public String getId() {

@@ -3,6 +3,8 @@ package com.example.egfootballtracker.View;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,7 +42,8 @@ public class DisplayPlayersDetailsActivity extends Activity {
     DatabaseReference myRef;
     List<PlayerDetails> playerDetails;
     RecyclerView recyclerViewTest;
-    private final static String Cat = "players";
+    ApiInterface apiInterface;
+Button btnDelete;
 
 
     @Override
@@ -51,18 +54,30 @@ public class DisplayPlayersDetailsActivity extends Activity {
         recyclerViewTest=findViewById(R.id.reyclerviewPlayerDetails);
         recyclerViewTest.setHasFixedSize(true);
         recyclerViewTest.setLayoutManager(new LinearLayoutManager(this));
+        btnDelete=findViewById(R.id.btnDeletePlayerList);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.3.2:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        apiInterface = retrofit.create(ApiInterface.class);
+
+
+        btnDelete=findViewById(R.id.btnDeletePlayerList);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePlayer();
+            }
+        });
+
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
         Call<List<PlayerDetailsNew>> call = apiInterface.getPlayerDetails();
-        call.enqueue(new Callback<List<PlayerDetailsNew>>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<List<PlayerDetailsNew>> call, Response<List<PlayerDetailsNew>> response) {
-                if(!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     Toast.makeText(DisplayPlayersDetailsActivity.this, response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -78,8 +93,29 @@ public class DisplayPlayersDetailsActivity extends Activity {
                 Toast.makeText(DisplayPlayersDetailsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
+
+
+
+    }
+    private void deletePlayer() {
+
+        Call<Void> call = apiInterface.deletePlayer(3);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                Toast.makeText(DisplayPlayersDetailsActivity.this, "Deleted Successfully : " + response.code(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
 //        recyclerView = findViewById(R.id.reyclerviewPlayerDetails);
 //        playerDetails = new ArrayList<>();
 //

@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EGFootballTracker">
         <activity
-            android:name=".TestActivity"
-            android:exported="false" />
-        <activity
             android:name=".View.InfoActivity"
             android:exported="false" />
         <activity

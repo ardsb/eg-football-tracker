@@ -1,28 +1,48 @@
 package com.example.egfootballtracker.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.egfootballtracker.Model.PlayerDetails;
 import com.example.egfootballtracker.Model.PlayerDetailsNew;
 import com.example.egfootballtracker.R;
+import com.example.egfootballtracker.Services.ApiInterface;
+import com.example.egfootballtracker.View.DisplayPlayersDetailsActivity;
+import com.example.egfootballtracker.View.HomepageActivity;
+import com.example.egfootballtracker.View.PlayerStatisticActivity;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder> {
 
 
     List<PlayerDetailsNew> playerDetailsNewList;
     Context context;
+    LinearLayout layout;
+    Button btnDelete;
+    ApiInterface apiInterface;
+
 
     public TestAdapter(Context context,List<PlayerDetailsNew> playerDetailsNew){
         this.context = context;
         playerDetailsNewList = playerDetailsNew;
+
+
     }
     @NonNull
     @Override
@@ -30,10 +50,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
         View view = LayoutInflater.from(context).inflate(R.layout.players_profile_list_layout,parent,false);
 
         return new TestViewHolder(view);
+
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TestViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TestViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         PlayerDetailsNew playerDetailsNew = playerDetailsNewList.get(position);
 
@@ -58,9 +80,18 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
         holder.txtMotMStatistic.setText(playerDetailsNew.getPlayerMom());
         holder.txtProfilePerformance.setText(playerDetailsNew.getPlayerPerformance());
 
-//        holder.playerName.setText(playerDetailsNew.getPlayerName());
-//        holder.PlayerAge.setText(playerDetailsNew.getPlayerAge());
-//        holder.PlayerCountry.setText(playerDetailsNew.getPlayerCountry());
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainActivityIntent = new Intent(context
+                        , PlayerStatisticActivity.class);
+                PlayerDetailsNew playerDetails=playerDetailsNewList.get(position);
+                mainActivityIntent.putExtra("Player Details",playerDetails);
+                context.startActivity(mainActivityIntent);
+            }
+        });
+
+
     }
 
     @Override
@@ -76,6 +107,8 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
                 txtYelCardStatistic,txtRedCardStatistic,txtSpGStatistic,txtPSStatistic,
                 txtArialsWonStatistic,txtMotMStatistic,txtProfilePerformance;
 
+
+
         public TestViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -87,6 +120,8 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
             txtPlayerBorn = itemView.findViewById(R.id.txtDisplayingProfileBorn);
             txtPlayerPlayersHeight = itemView.findViewById(R.id.txtDisplayingProfileHeight);
             txtPlayersPosition = itemView.findViewById(R.id.txtDisplayingProfilePosition);
+            layout = itemView.findViewById(R.id.playerProfileLayout);
+
 
 
             //For Player's Statistic
@@ -101,13 +136,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
             txtArialsWonStatistic=itemView.findViewById(R.id.txtDisplayingProfileArialWonStatistic);
             txtMotMStatistic=itemView.findViewById(R.id.txtDisplayingProfileMotMStatistic);
             txtProfilePerformance=itemView.findViewById(R.id.txtDisplayingProfilePerformance);
-//
-//            playerName = itemView.findViewById(R.id.PlayerName);
-//            PlayerAge = itemView.findViewById(R.id.PlayerAge);
-//            PlayerCountry = itemView.findViewById(R.id.PlayerCountry);
+
 
 
 
         }
+        
+        }
     }
-}
+
