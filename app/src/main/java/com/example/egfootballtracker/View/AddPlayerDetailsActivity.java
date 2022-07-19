@@ -2,14 +2,22 @@ package com.example.egfootballtracker.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +39,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -65,6 +75,9 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_player_details);
+
+        ActivityCompat.requestPermissions(AddPlayerDetailsActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
 
 
         storageRef = FirebaseStorage.getInstance().getReference("profile-images");
@@ -108,6 +121,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 fileChoose();
+
             }
         });
 
@@ -169,18 +183,78 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                         txtArialsWonStatistic.getText().toString().trim(),
                         txtMotMStatistic.getText().toString().trim(),
                         txtPlayerPerfomanceStatistic.getText().toString().trim());
-
+                fileUploader();
             }
 
         });
 
         btnInfo=findViewById(R.id.btnInfo);
         btnInfo.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                showInfoDialog();
+                createMyPDF();
             }
         });
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void createMyPDF(){
+
+        PdfDocument myPdfDocument = new PdfDocument();
+        PdfDocument.PageInfo myPageInfo = new PdfDocument.PageInfo.Builder(300,600,1).create();
+        PdfDocument.Page myPage = myPdfDocument.startPage(myPageInfo);
+
+
+
+        Paint myPaint = new Paint();
+        //For Profile
+        String PLayersName = txtPLayersName.getText().toString().trim();
+        String PLayersAge = txtPLayersAge.getText().toString().trim();
+        String PLayersBorn = txtPLayersBorn.getText().toString().trim();
+        String PlayingCountry = txtPlayingCountry.getText().toString().trim();
+        String PlayersHeight = txtPlayersHeight.getText().toString().trim();
+        String PlayersPosition = txtPlayersPosition.getText().toString().trim();
+
+        //For Player's Statistics
+        String AppsStatistic = txtAppsStatistic.getText().toString().trim();
+        String MinutesStatistic = txtMinutesStatistic.getText().toString().trim();
+        String GoalsStaistic = txtGoalsStaistic.getText().toString().trim();
+        String AssistStatistic = txtAssistStatistic.getText().toString().trim();
+        String YelCardStatistic = txtYelCardStatistic.getText().toString().trim();
+        String RedCardStatistic = txtRedCardStatistic.getText().toString().trim();
+        String SpGStatistic = txtSpGStatistic.getText().toString().trim();
+        String PSStatistic = txtPSStatistic.getText().toString().trim();
+        String ArialsWonStatistic = txtArialsWonStatistic.getText().toString().trim();
+        String MotMStatistic = txtMotMStatistic.getText().toString().trim();
+        String PlayerPerfomanceStatistic = txtPlayerPerfomanceStatistic.getText().toString().trim();
+
+        int x = 10, y=25;
+
+            myPage.getCanvas().drawText
+                    ("Player name:" +" "+ PLayersName, x, y, myPaint);
+
+
+
+
+
+
+        myPdfDocument.finishPage(myPage);
+
+        String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/Players Details.pdf";
+        File myFile = new File(myFilePath);
+        try {
+            myPdfDocument.writeTo(new FileOutputStream(myFile));
+            Toast.makeText(AddPlayerDetailsActivity.this, "Data saved as pdf format", Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            txtPLayersName.setText("ERROR");
+        }
+
+        myPdfDocument.close();
     }
 
         private void postData(String PLayersName, String PlayerAge, String PlayerBorn,
@@ -223,7 +297,12 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                 }
             });
 
-    }
+
+}
+
+
+
+
 
     private void createPlayerOnFirebase() {
 

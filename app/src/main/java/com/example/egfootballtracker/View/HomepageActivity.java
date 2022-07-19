@@ -8,19 +8,15 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.Toast;
 
-import com.example.egfootballtracker.Adapter.LiveScoreAdapter;
+import com.example.egfootballtracker.Adapter.LiveScoreMatchesAdapter;
 import com.example.egfootballtracker.Adapter.NewsAdapter;
 import com.example.egfootballtracker.Adapter.VideosAdapter;
 import com.example.egfootballtracker.Model.Item;
@@ -114,6 +110,12 @@ public class HomepageActivity extends AppCompatActivity {
                                     AddMatchActivity.class);
                             startActivity(mainActivityIntent);
 
+                        }else if(id == R.id.txtShowMatch){
+
+                            Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                                    ShowMatchesActivity.class);
+                            startActivity(mainActivityIntent);
+
                         } else if (id == R.id.txtAddPlayerDetails) {
 
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
@@ -193,10 +195,10 @@ public class HomepageActivity extends AppCompatActivity {
 
                 if (matches.size() > 0) {
 
-                    LiveScoreAdapter LiveScoreAdapter = new LiveScoreAdapter
+                    LiveScoreMatchesAdapter liveScoreMatchesAdapter = new LiveScoreMatchesAdapter
                             (HomepageActivity.this, matches);
 
-                    LiveScoreAdapter adapter = new LiveScoreAdapter
+                    LiveScoreMatchesAdapter adapter = new LiveScoreMatchesAdapter
                             (HomepageActivity.this, matches);
 
 

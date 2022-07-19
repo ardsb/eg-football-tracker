@@ -3,7 +3,7 @@ package com.example.egfootballtracker.Model;
 import java.io.Serializable;
 
 public class PlayerDetailsNew implements Serializable {
-    private String id;
+    private int id;
 
     private String playerName;
 
@@ -65,11 +65,11 @@ public class PlayerDetailsNew implements Serializable {
         this.playerPerformance = playerPerformance;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

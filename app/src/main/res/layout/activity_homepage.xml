@@ -40,7 +40,6 @@
             android:layout_height="170dp"
             android:orientation="horizontal"
             android:layout_margin="3dp"
-            tools:listitem="@layout/matches_layout"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
     </LinearLayout>
 

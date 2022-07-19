@@ -50,7 +50,11 @@ Button btnDelete;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_players_profile);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         recyclerViewTest=findViewById(R.id.reyclerviewPlayerDetails);
         recyclerViewTest.setHasFixedSize(true);
         recyclerViewTest.setLayoutManager(new LinearLayoutManager(this));
@@ -93,14 +97,11 @@ Button btnDelete;
                 Toast.makeText(DisplayPlayersDetailsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
     }
+
     private void deletePlayer() {
 
-        Call<Void> call = apiInterface.deletePlayer(3);
+        Call<Void> call = apiInterface.deletePlayer(2);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

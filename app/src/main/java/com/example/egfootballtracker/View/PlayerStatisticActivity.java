@@ -1,5 +1,6 @@
 package com.example.egfootballtracker.View;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,18 +9,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.egfootballtracker.Model.PlayerDetails;
 import com.example.egfootballtracker.Model.PlayerDetailsNew;
 import com.example.egfootballtracker.R;
 import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PlayerStatisticActivity extends AppCompatActivity {
 
@@ -33,18 +33,25 @@ public class PlayerStatisticActivity extends AppCompatActivity {
             txtMotMStatisticPassing,txtPlayerPerformanceStatisticPassing; //For Player's Statistic
 
     DatabaseReference myRef;
-    Button btnDelete;
+    Button btnDelete,edtButton;
     CircleImageView imageView;
     ApiInterface apiInterface;
+    Activity thisActivity;
+
+
 
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_statistic);
+        thisActivity =  this;
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.3.2:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("player-details");
+        apiInterface = retrofit.create(ApiInterface.class);
 
         PlayerDetailsNew playerDetails = (PlayerDetailsNew) getIntent().getSerializableExtra
                 ("Player Details");
@@ -59,9 +66,10 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtPlayerPositionStatistic = findViewById(R.id.txtPlayerPositionStatistic);
         txtPlayerHeightStatistic = findViewById(R.id.txtPlayerHeightStatistic);
         imageView=findViewById(R.id.imgProfileDisplayListStatistic);
-
+        btnDelete =  findViewById(R.id.btnDelete);
+        edtButton = findViewById(R.id.btnEdit);
         txtPlayerNameStatistic.setText(playerDetails.getPlayerName());
-        txtPlayerAgeStatistic.setText(playerDetails.getPlayerAge());
+        txtPlayerAgeStatistic.setText("88");
         txtPlayerBornStatistic.setText(playerDetails.getPlayerBorn());
         txtPlayerCountryStatistic.setText(playerDetails.getPlayerCountry());
         txtPlayerPositionStatistic.setText(playerDetails.getPlayerPosition());
@@ -99,9 +107,51 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtMotMStatisticPassing.setText(playerDetails.getPlayerMom());
         txtPlayerPerformanceStatisticPassing.setText(playerDetails.getPlayerPerformance());
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+                Call<Void> call = apiInterface.deletePlayer(playerDetails.getId());
+                call.enqueue(new Callback<>() {
+
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Toast.makeText(thisActivity,"Player deletion successfull", Toast.LENGTH_SHORT).show();
+                        thisActivity.finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
 
 
+        edtButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                playerDetails.setPlayerAge(txtPlayerAgeStatistic.getText().toString());
+
+                ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+                Call<PlayerDetailsNew> call = apiInterface.editPlayer(playerDetails.getId(),playerDetails);
+                call.enqueue(new Callback<>() {
+
+                    @Override
+                    public void onResponse(Call<PlayerDetailsNew> call, Response<PlayerDetailsNew> response) {
+                        Toast.makeText(thisActivity,"Player deletion successfull", Toast.LENGTH_SHORT).show();
+                        thisActivity.finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<PlayerDetailsNew> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
     }
 
 }

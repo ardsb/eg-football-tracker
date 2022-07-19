@@ -24,6 +24,7 @@ import com.example.egfootballtracker.View.PlayerStatisticActivity;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +35,8 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
     List<PlayerDetailsNew> playerDetailsNewList;
     Context context;
     LinearLayout layout;
+    public CircleImageView imageView;
+
     Button btnDelete;
     ApiInterface apiInterface;
 
@@ -141,7 +144,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder
 
 
         }
-        
+
         }
     }
 

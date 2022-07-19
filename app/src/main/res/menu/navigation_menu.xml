@@ -7,6 +7,13 @@
         android:title="Add A Match">
 
     </item>
+
+    <item
+        android:id="@+id/txtShowMatch"
+        android:icon="@drawable/ic_baseline_sports_soccer_24"
+        android:title="Show Matches">
+
+    </item>
     <item
         android:id="@+id/txtAddPlayerDetails"
         android:icon="@drawable/ic_baseline_person_add_24"
