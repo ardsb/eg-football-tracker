@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +38,7 @@ public class LiveScoreMatchesAdapter extends RecyclerView.Adapter<LiveScoreMatch
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView teamNameA, teamNameB, teamNameAScores, teamNameBScores, matchTime;
         private LinearLayout layout;
-        Button btnEdit;
+        ImageView btnEdit;
 
         public ViewHolder(View view) {
             super(view);
@@ -99,7 +100,8 @@ public class LiveScoreMatchesAdapter extends RecyclerView.Adapter<LiveScoreMatch
                 @Override
                 public void onClick(View v) {
                     selectedMatch.setTeamNameAScores(String.valueOf(teamHomeScore.getText()));
-                    selectedMatch.setTeamNameB(String.valueOf(teamAwayScore.getText()));
+                    selectedMatch.setTeamNameBScores(String.valueOf(teamAwayScore.getText()));
+                    selectedMatch.setMatchTime(String.valueOf(matchTime.getText()));
                     selectedMatchDbRef.setValue(selectedMatch);
                     dialogPlus.dismiss();
                 }

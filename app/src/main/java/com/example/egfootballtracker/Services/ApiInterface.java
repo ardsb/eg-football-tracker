@@ -2,7 +2,7 @@ package com.example.egfootballtracker.Services;
 
 
 
-import com.example.egfootballtracker.Model.PlayerDetailsNew;
+import com.example.egfootballtracker.Model.PlayerDetails;
 import com.example.egfootballtracker.Model.SportNewsList;
 import com.example.egfootballtracker.Model.SportVideosResponse;
 
@@ -27,15 +27,15 @@ public interface ApiInterface {
             String chId, @Query("part") String part);
 
     @GET("players")
-    Call<List<PlayerDetailsNew>> getPlayerDetails();
+    Call<List<PlayerDetails>> getPlayerDetails();
 
     @POST("players")
-    Call<PlayerDetailsNew>setPlayerDetails(@Body PlayerDetailsNew playerDetailsNew);
+    Call<PlayerDetails>setPlayerDetails(@Body PlayerDetails playerDetails);
 
     @DELETE("players/{id}")
     Call<Void> deletePlayer(@Path("id") int id);
 
     @PUT("players/{id}")
-    Call<PlayerDetailsNew> editPlayer(@Path("id") int id,@Body PlayerDetailsNew playerDetailsNew);
+    Call<PlayerDetails> editPlayer(@Path("id") int id, @Body PlayerDetails playerDetails);
 
 }

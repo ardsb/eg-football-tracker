@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.egfootballtracker.Model.PlayerDetailsNew;
+import com.example.egfootballtracker.Model.PlayerDetails;
 import com.example.egfootballtracker.R;
 import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +33,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
             txtMotMStatisticPassing,txtPlayerPerformanceStatisticPassing; //For Player's Statistic
 
     DatabaseReference myRef;
-    Button btnDelete,edtButton;
+    Button btnDelete,btnEdit;
     CircleImageView imageView;
     ApiInterface apiInterface;
     Activity thisActivity;
@@ -53,7 +53,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
 
         apiInterface = retrofit.create(ApiInterface.class);
 
-        PlayerDetailsNew playerDetails = (PlayerDetailsNew) getIntent().getSerializableExtra
+        PlayerDetails playerDetails = (PlayerDetails) getIntent().getSerializableExtra
                 ("Player Details");
 
 
@@ -67,21 +67,14 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtPlayerHeightStatistic = findViewById(R.id.txtPlayerHeightStatistic);
         imageView=findViewById(R.id.imgProfileDisplayListStatistic);
         btnDelete =  findViewById(R.id.btnDelete);
-        edtButton = findViewById(R.id.btnEdit);
+        btnEdit = findViewById(R.id.btnEdit);
         txtPlayerNameStatistic.setText(playerDetails.getPlayerName());
-        txtPlayerAgeStatistic.setText("88");
+        txtPlayerAgeStatistic.setText(playerDetails.getPlayerApps());
         txtPlayerBornStatistic.setText(playerDetails.getPlayerBorn());
         txtPlayerCountryStatistic.setText(playerDetails.getPlayerCountry());
         txtPlayerPositionStatistic.setText(playerDetails.getPlayerPosition());
         txtPlayerHeightStatistic.setText(playerDetails.getPlayerHeight());
-//        Picasso.get()
-//                .load(playerDetails.getmImageUrl())
-//                .fit()
-//                .centerCrop()
-//                .into(imageView);
 
-
-        //For Player's Statistic
         txtAppsStatisticPassing = findViewById(R.id.txtAppsStatisticPassing);
         txtMinutesStatisticPassing = findViewById(R.id.txtMinutesStatisticPassing);
         txtGoalsStatisticPassing = findViewById(R.id.txtGoalsStatisticPassing);
@@ -129,24 +122,44 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         });
 
 
-        edtButton.setOnClickListener(new View.OnClickListener() {
+        btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                playerDetails.setPlayerName(txtPlayerNameStatistic.getText().toString());
                 playerDetails.setPlayerAge(txtPlayerAgeStatistic.getText().toString());
+                playerDetails.setPlayerBorn(txtPlayerBornStatistic.getText().toString());
+                playerDetails.setPlayerCountry(txtPlayerCountryStatistic.getText().toString());
+                playerDetails.setPlayerPosition(txtPlayerPositionStatistic.getText().toString());
+                playerDetails.setPlayerHeight(txtPlayerHeightStatistic.getText().toString());
+                playerDetails.setPlayerApps(txtAppsStatisticPassing.getText().toString());
+                playerDetails.setPlayerPlayedMinutes(txtMinutesStatisticPassing.getText().toString());
+                playerDetails.setPlayerGoals(txtGoalsStatisticPassing.getText().toString());
+                playerDetails.setPlayerAssist(txtAssistStatisticPassing.getText().toString());
+                playerDetails.setPlayerYellowCard(txtYelCardStatisticPassing.getText().toString());
+                playerDetails.setPlayerRedCard(txtRedCardStatisticPassing.getText().toString());
+                playerDetails.setPlayerSpg(txtSpGStatisticPassing.getText().toString());
+                playerDetails.setPlayerPs(txtPSSStatisticPassing.getText().toString());
+                playerDetails.setPlayerArialWon(txtArialsStatisticPassing.getText().toString());
+                playerDetails.setPlayerMom(txtMotMStatisticPassing.getText().toString());
+                playerDetails.setPlayerPerformance(txtPlayerPerformanceStatisticPassing.getText().toString());
+
+
+
+
 
                 ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-                Call<PlayerDetailsNew> call = apiInterface.editPlayer(playerDetails.getId(),playerDetails);
+                Call<PlayerDetails> call = apiInterface.editPlayer(playerDetails.getId(),playerDetails);
                 call.enqueue(new Callback<>() {
 
                     @Override
-                    public void onResponse(Call<PlayerDetailsNew> call, Response<PlayerDetailsNew> response) {
-                        Toast.makeText(thisActivity,"Player deletion successfull", Toast.LENGTH_SHORT).show();
+                    public void onResponse(Call<PlayerDetails> call, Response<PlayerDetails> response) {
+                        Toast.makeText(thisActivity,"Player Update Successful", Toast.LENGTH_SHORT).show();
                         thisActivity.finish();
                     }
 
                     @Override
-                    public void onFailure(Call<PlayerDetailsNew> call, Throwable t) {
+                    public void onFailure(Call<PlayerDetails> call, Throwable t) {
 
                     }
                 });

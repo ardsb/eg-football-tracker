@@ -27,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.egfootballtracker.Model.PlayerDetails;
-import com.example.egfootballtracker.Model.PlayerDetailsNew;
 import com.example.egfootballtracker.R;
 
 import com.example.egfootballtracker.Services.ApiInterface;
@@ -41,7 +40,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -120,7 +118,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
         btnChooseFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fileChoose();
+
 
             }
         });
@@ -183,7 +181,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                         txtArialsWonStatistic.getText().toString().trim(),
                         txtMotMStatistic.getText().toString().trim(),
                         txtPlayerPerfomanceStatistic.getText().toString().trim());
-                fileUploader();
+
             }
 
         });
@@ -234,12 +232,6 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
 
             myPage.getCanvas().drawText
                     ("Player name:" +" "+ PLayersName, x, y, myPaint);
-
-
-
-
-
-
         myPdfDocument.finishPage(myPage);
 
         String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/Players Details.pdf";
@@ -272,16 +264,16 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
 
             ApiInterface retrofitAPI = retrofit.create(ApiInterface.class);
 
-            PlayerDetailsNew playerDetailsNew = new PlayerDetailsNew(PLayersName, PlayerAge,
+            PlayerDetails playerDetails = new PlayerDetails(PLayersName, PlayerAge,
                     PlayerBorn,PlayersCountry,PlayersHeight,PlayersPosition,PlayersApps,PlayersMinutes,PlayersGoals,
                     PlayersAssist,PlayersYelCard,PlayersRedCard,PlayerSpg,PlayersPS,PlayersArialsWon,
                     PlayersMotM,PlayersPerformance);
 
-            Call<PlayerDetailsNew> call = retrofitAPI.setPlayerDetails(playerDetailsNew);
+            Call<PlayerDetails> call = retrofitAPI.setPlayerDetails(playerDetails);
 
-            call.enqueue(new Callback<PlayerDetailsNew>() {
+            call.enqueue(new Callback<PlayerDetails>() {
                 @Override
-                public void onResponse(Call<PlayerDetailsNew> call, Response<PlayerDetailsNew> response) {
+                public void onResponse(Call<PlayerDetails> call, Response<PlayerDetails> response) {
 
                     if (response.isSuccessful()) {
                         Toast.makeText(AddPlayerDetailsActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
@@ -292,7 +284,7 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<PlayerDetailsNew> call, Throwable t) {
+                public void onFailure(Call<PlayerDetails> call, Throwable t) {
                     responseTV.setText("Error found is : " + t.getMessage());
                 }
             });
@@ -304,156 +296,21 @@ public class AddPlayerDetailsActivity extends AppCompatActivity {
 
 
 
-    private void createPlayerOnFirebase() {
-
-        //For Profile
-        String PLayersName = txtPLayersName.getText().toString().trim();
-        String PLayersAge = txtPLayersAge.getText().toString().trim();
-        String PLayersBorn = txtPLayersBorn.getText().toString().trim();
-        String PlayingCountry = txtPlayingCountry.getText().toString().trim();
-        String PlayersHeight = txtPlayersHeight.getText().toString().trim();
-        String PlayersPosition = txtPlayersPosition.getText().toString().trim();
-
-        //For Player's Statistics
-        String AppsStatistic = txtAppsStatistic.getText().toString().trim();
-        String MinutesStatistic = txtMinutesStatistic.getText().toString().trim();
-        String GoalsStaistic = txtGoalsStaistic.getText().toString().trim();
-        String AssistStatistic = txtAssistStatistic.getText().toString().trim();
-        String YelCardStatistic = txtYelCardStatistic.getText().toString().trim();
-        String RedCardStatistic = txtRedCardStatistic.getText().toString().trim();
-        String SpGStatistic = txtSpGStatistic.getText().toString().trim();
-        String PSStatistic = txtPSStatistic.getText().toString().trim();
-        String ArialsWonStatistic = txtArialsWonStatistic.getText().toString().trim();
-        String MotMStatistic = txtMotMStatistic.getText().toString().trim();
-        String PlayerPerfomanceStatistic = txtPlayerPerfomanceStatistic.getText().toString().trim();
-
-        if
-            //For Profile
-        (!TextUtils.isEmpty(PLayersName) && !TextUtils.isEmpty(PLayersAge)
-                && !TextUtils.isEmpty(PLayersBorn) && !TextUtils.isEmpty(PlayingCountry)
-                && !TextUtils.isEmpty(PlayersHeight) && !TextUtils.isEmpty(PlayersPosition)
 
 
-                //For Player's Statistic
-                && !TextUtils.isEmpty(AppsStatistic) && !TextUtils.isEmpty(MinutesStatistic)
-                && !TextUtils.isEmpty(GoalsStaistic) && !TextUtils.isEmpty(AssistStatistic)
-                && !TextUtils.isEmpty(YelCardStatistic)
-                && !TextUtils.isEmpty(RedCardStatistic)
-                && !TextUtils.isEmpty(SpGStatistic) && !TextUtils.isEmpty(PSStatistic)
-                && !TextUtils.isEmpty(ArialsWonStatistic) && !TextUtils.isEmpty(MotMStatistic) &&
-                !TextUtils.isEmpty(PlayerPerfomanceStatistic) ){
-
-            addProfileDetails(PLayersName, PLayersAge, PLayersBorn, PlayingCountry,
-                    PlayersHeight, PlayersPosition, AppsStatistic, MinutesStatistic,
-                    GoalsStaistic, AssistStatistic, YelCardStatistic, RedCardStatistic,
-                    SpGStatistic, PSStatistic, ArialsWonStatistic, MotMStatistic,PlayerPerfomanceStatistic);
 
 
-        } else {
-
-            Toast.makeText(getApplicationContext(), "Player details cannot be empty"
-                    , Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageUri = data.getData();
-            imageViewProfile.setImageURI(imageUri);
-
-        }
-    }
-
-    private String getExtention(Uri uri) {
-
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-
-    }
-
-    public void fileUploader() {
-
-        if (imageUri != null) {
-            StorageReference storageReference = storageRef.child(System.currentTimeMillis()
-                    + "." + getExtention(imageUri));
-
-            if (imageUri != null) {
-                if (!uploadProgressDialog.isShowing()) {
-                    uploadProgressDialog.show();
-                }
-
-                storageReference.putFile(imageUri).continueWithTask(task -> {
-                    if (!task.isSuccessful()) {
-                        throw task.getException();
-                    }
-                    return storageReference.getDownloadUrl();
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        if (uploadProgressDialog.isShowing()) {
-                            uploadProgressDialog.hide();
-                        }
-
-                        if (task.isSuccessful()) {
-                            Uri downloadUri = task.getResult();
-                            Log.e("TEST", "then: " + downloadUri.toString());
-                            Toast.makeText(AddPlayerDetailsActivity.this
-                                    , "New Player Has Added", Toast.LENGTH_LONG)
-                                    .show();
-                            imageUploadUrl = downloadUri.toString();
-
-                            createPlayerOnFirebase();
 
 
-                        } else {
-
-                            Toast.makeText(getApplicationContext(), "upload failed: "
-                                    + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-
-        } else {
-
-            if (uploadProgressDialog.isShowing()) {
-                uploadProgressDialog.hide();
-            }
-            Toast.makeText(this, "No file selected", Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    public void fileChoose() {
-
-        Intent intent = new Intent();
-        intent.setType("image/'");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 1);
-    }
-
-    public void addProfileDetails(String PLayersName, String PLayersAge, String PLayersBorn
-            , String PlayingCountry, String PlayersHeight, String PlayersPosition, String AppsStatistic,
-                                  String MinutesStatistic, String GoalsStaistic, String AssistStatistic,
-                                  String YelCardStatistic, String RedCardStatistic,
-                                  String SpGStatistic, String PSStatistic,
-                                  String ArialsWonStatistic, String MotMStatistic, String PlayerPerfomanceStatistic) {
 
 
-        String id = myRef.push().getKey();
-        PlayerDetails playerDetails = new PlayerDetails(id, imageUploadUrl, PLayersName, PLayersAge
-                , PLayersBorn, PlayingCountry, PlayersHeight, PlayersPosition, AppsStatistic
-                , MinutesStatistic,  GoalsStaistic, AssistStatistic, YelCardStatistic, RedCardStatistic,
-                SpGStatistic, PSStatistic,ArialsWonStatistic,MotMStatistic,PlayerPerfomanceStatistic);
 
-        myRef.child(id).setValue(playerDetails);
-    }
+
+
+
+
+
+
 
     public void playerPerformanceCalculation(){
 

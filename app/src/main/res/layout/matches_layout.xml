@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="170dp"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="3dp"
         card_view:cardUseCompatPadding="true"
@@ -27,9 +27,10 @@
             android:textColor="#BA0E0E" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_marginLeft="140dp"
+           >
 
             <ImageView
                 android:layout_width="50dp"
@@ -41,6 +42,15 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/france"/>
+
+            <ImageView
+                android:id="@+id/btnEditMatch"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                />
 
 
 
@@ -123,13 +133,7 @@
                     android:text="TextView"
                     tools:text="2" />
             </LinearLayout>
-            <Button
-                android:id="@+id/btnEditMatch"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:background="?attr/colorSecondary"
-                android:text="Edit " />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -1,92 +1,76 @@
 package com.example.egfootballtracker.Model;
+
 import java.io.Serializable;
 
 public class PlayerDetails implements Serializable {
-
-    private String id;
-
-    private String mImageUrl;
+    private int id;
 
     private String playerName;
 
-    private String currentAge;
+    private String playerAge;
 
-    private String born;
+    private String playerBorn;
 
-    private String country;
+    private String playerCountry;
 
-    private String height;
+    private String playerHeight;
 
-    private String position;
+    private String playerPosition;
 
-    private String Apps;
+    private String playerApps;
 
-    private String minutes;
+    private String playerPlayedMinutes;
 
-    private String goals;
+    private String playerGoals;
 
-    private String Assist;
+    private String playerAssist;
 
-    private String yelCard;
+    private String playerYellowCard;
 
-    private String redCard;
+    private String playerRedCard;
 
-    private String spg;
+    private String playerSpg;
 
-    private String pss;
+    private String playerPs;
 
-    private String arialWon;
+    private String playerArialWon;
 
-    private String motM;
+    private String playerMom;
 
     private String playerPerformance;
 
 
-    public PlayerDetails(String id, String mImageUrl, String playerName, String currentAge,
-                         String born, String country, String height, String position, String apps,
-                         String minutes, String goals, String assist, String yelCard, String redCard,
-                         String spg, String pss, String arialWon, String motM,String playerPerformance) {
-        this.id = id;
-        this.mImageUrl = mImageUrl;
+    public PlayerDetails(String playerName, String playerAge, String playerBorn, String playerCountry,
+                         String playerHeight, String playerPosition, String playerApps,
+                         String playerPlayedMinutes, String playerGoals, String playerAssist,
+                         String playerYellowCard, String playerRedCard,
+                         String playerSpg, String playerPs, String playerArialWon, String playerMom,
+                         String playerPerformance) {
         this.playerName = playerName;
-        this.currentAge = currentAge;
-        this.born = born;
-        this.country = country;
-        this.height = height;
-        this.position = position;
-        Apps = apps;
-        this.minutes = minutes;
-        this.goals = goals;
-        Assist = assist;
-        this.yelCard = yelCard;
-        this.redCard = redCard;
-        this.spg = spg;
-        this.pss = pss;
-        this.arialWon = arialWon;
-        this.motM = motM;
+        this.playerAge = playerAge;
+        this.playerBorn = playerBorn;
+        this.playerCountry = playerCountry;
+        this.playerHeight = playerHeight;
+        this.playerPosition = playerPosition;
+        this.playerApps = playerApps;
+        this.playerPlayedMinutes = playerPlayedMinutes;
+        this.playerGoals = playerGoals;
+        this.playerAssist = playerAssist;
+        this.playerYellowCard = playerYellowCard;
+        this.playerRedCard = playerRedCard;
+        this.playerSpg = playerSpg;
+        this.playerPs = playerPs;
+        this.playerArialWon = playerArialWon;
+        this.playerMom = playerMom;
         this.playerPerformance = playerPerformance;
-
-
     }
 
-    public PlayerDetails(){
-
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public String getmImageUrl() {
-        return mImageUrl;
-    }
-
-    public void setmImageUrl(String mImageUrl) {
-        this.mImageUrl = mImageUrl;
     }
 
     public String getPlayerName() {
@@ -97,124 +81,124 @@ public class PlayerDetails implements Serializable {
         this.playerName = playerName;
     }
 
-    public String getCurrentAge() {
-        return currentAge;
+    public String getPlayerAge() {
+        return playerAge;
     }
 
-    public void setCurrentAge(String currentAge) {
-        this.currentAge = currentAge;
+    public void setPlayerAge(String playerAge) {
+        this.playerAge = playerAge;
     }
 
-    public String getBorn() {
-        return born;
+    public String getPlayerBorn() {
+        return playerBorn;
     }
 
-    public void setBorn(String born) {
-        this.born = born;
+    public void setPlayerBorn(String playerBorn) {
+        this.playerBorn = playerBorn;
     }
 
-    public String getCountry() {
-        return country;
+    public String getPlayerCountry() {
+        return playerCountry;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setPlayerCountry(String playerCountry) {
+        this.playerCountry = playerCountry;
     }
 
-    public String getHeight() {
-        return height;
+    public String getPlayerHeight() {
+        return playerHeight;
     }
 
-    public void setHeight(String height) {
-        this.height = height;
+    public void setPlayerHeight(String playerHeight) {
+        this.playerHeight = playerHeight;
     }
 
-    public String getPosition() {
-        return position;
+    public String getPlayerPosition() {
+        return playerPosition;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setPlayerPosition(String playerPosition) {
+        this.playerPosition = playerPosition;
     }
 
-    public String getApps() {
-        return Apps;
+    public String getPlayerApps() {
+        return playerApps;
     }
 
-    public void setApps(String apps) {
-        Apps = apps;
+    public void setPlayerApps(String playerApps) {
+        this.playerApps = playerApps;
     }
 
-    public String getMinutes() {
-        return minutes;
+    public String getPlayerPlayedMinutes() {
+        return playerPlayedMinutes;
     }
 
-    public void setMinutes(String minutes) {
-        this.minutes = minutes;
+    public void setPlayerPlayedMinutes(String playerPlayedMinutes) {
+        this.playerPlayedMinutes = playerPlayedMinutes;
     }
 
-    public String getGoals() {
-        return goals;
+    public String getPlayerGoals() {
+        return playerGoals;
     }
 
-    public void setGoals(String goals) {
-        this.goals = goals;
+    public void setPlayerGoals(String playerGoals) {
+        this.playerGoals = playerGoals;
     }
 
-    public String getAssist() {
-        return Assist;
+    public String getPlayerAssist() {
+        return playerAssist;
     }
 
-    public void setAssist(String assist) {
-        Assist = assist;
+    public void setPlayerAssist(String playerAssist) {
+        this.playerAssist = playerAssist;
     }
 
-    public String getYelCard() {
-        return yelCard;
+    public String getPlayerYellowCard() {
+        return playerYellowCard;
     }
 
-    public void setYelCard(String yelCard) {
-        this.yelCard = yelCard;
+    public void setPlayerYellowCard(String playerYellowCard) {
+        this.playerYellowCard = playerYellowCard;
     }
 
-    public String getRedCard() {
-        return redCard;
+    public String getPlayerRedCard() {
+        return playerRedCard;
     }
 
-    public void setRedCard(String redCard) {
-        this.redCard = redCard;
+    public void setPlayerRedCard(String playerRedCard) {
+        this.playerRedCard = playerRedCard;
     }
 
-    public String getSpg() {
-        return spg;
+    public String getPlayerSpg() {
+        return playerSpg;
     }
 
-    public void setSpg(String spg) {
-        this.spg = spg;
+    public void setPlayerSpg(String playerSpg) {
+        this.playerSpg = playerSpg;
     }
 
-    public String getPss() {
-        return pss;
+    public String getPlayerPs() {
+        return playerPs;
     }
 
-    public void setPss(String pss) {
-        this.pss = pss;
+    public void setPlayerPs(String playerPs) {
+        this.playerPs = playerPs;
     }
 
-    public String getArialWon() {
-        return arialWon;
+    public String getPlayerArialWon() {
+        return playerArialWon;
     }
 
-    public void setArialWon(String arialWon) {
-        this.arialWon = arialWon;
+    public void setPlayerArialWon(String playerArialWon) {
+        this.playerArialWon = playerArialWon;
     }
 
-    public String getMotM() {
-        return motM;
+    public String getPlayerMom() {
+        return playerMom;
     }
 
-    public void setMotM(String motM) {
-        this.motM = motM;
+    public void setPlayerMom(String playerMom) {
+        this.playerMom = playerMom;
     }
 
     public String getPlayerPerformance() {

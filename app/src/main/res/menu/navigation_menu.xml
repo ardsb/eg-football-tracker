@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/txtShowMatch"
-        android:icon="@drawable/ic_baseline_sports_soccer_24"
+        android:icon="@drawable/ic_baseline_dns_24"
         android:title="Show Matches">
 
     </item>
