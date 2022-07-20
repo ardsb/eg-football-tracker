@@ -81,7 +81,9 @@
                     card_view:contentPaddingRight="10dp"
                     card_view:contentPaddingTop="10dp"
                     card_view:cardBackgroundColor="#186793">
-
+                    <ScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -108,8 +110,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
                                 android:paddingHorizontal="5dp"
-                                android:text="Arkam Iqbal"
-                                tools:ignore="TouchTargetSizeCheck" />
+                                android:text="Arkam Iqbal" />
 
                         </LinearLayout>
 
@@ -231,6 +232,7 @@
 
                         </LinearLayout>
                     </LinearLayout>
+                    </ScrollView>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 

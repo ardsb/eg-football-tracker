@@ -59,7 +59,6 @@ public class AddMatchActivity extends AppCompatActivity {
 
         });
 
-
     }
 
     public void addMatch(String HomeTeamName, String HostTeamName, String HomeTeamScore,

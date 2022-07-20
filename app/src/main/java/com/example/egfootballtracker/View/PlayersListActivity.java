@@ -2,7 +2,6 @@ package com.example.egfootballtracker.View;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -23,8 +22,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DisplayPlayersDetailsActivity extends Activity {
-    String TAG = DisplayPlayersDetailsActivity.class.getSimpleName();
+public class PlayersListActivity extends Activity {
+    String TAG = PlayersListActivity.class.getSimpleName();
     DatabaseReference myRef;
     List<PlayerDetails> playerDetails;
     RecyclerView recyclerViewTest;
@@ -44,7 +43,7 @@ Button btnDelete;
         recyclerViewTest=findViewById(R.id.reyclerviewPlayerDetails);
         recyclerViewTest.setHasFixedSize(true);
         recyclerViewTest.setLayoutManager(new LinearLayoutManager(this));
-      
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.3.2:8080/api/")
@@ -60,19 +59,19 @@ Button btnDelete;
             @Override
             public void onResponse(Call<List<PlayerDetails>> call, Response<List<PlayerDetails>> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(DisplayPlayersDetailsActivity.this, response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlayersListActivity.this, response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 List<PlayerDetails> playerDetailsList = response.body();
-                PlayersProfileAdpater playersProfileAdpater = new PlayersProfileAdpater(DisplayPlayersDetailsActivity.this, playerDetailsList);
+                PlayersProfileAdpater playersProfileAdpater = new PlayersProfileAdpater(PlayersListActivity.this, playerDetailsList);
                 recyclerViewTest.setAdapter(playersProfileAdpater);
 
             }
 
             @Override
             public void onFailure(Call<List<PlayerDetails>> call, Throwable t) {
-                Toast.makeText(DisplayPlayersDetailsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PlayersListActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

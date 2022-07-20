@@ -126,7 +126,7 @@ public class HomepageActivity extends AppCompatActivity {
 
 
                             Intent mainActivityIntent = new Intent(HomepageActivity.this,
-                                    DisplayPlayersDetailsActivity.class);
+                                    PlayersListActivity.class);
                             startActivity(mainActivityIntent);
 
                         }else if (id == R.id.txtLogout){

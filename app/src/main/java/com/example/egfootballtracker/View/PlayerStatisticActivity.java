@@ -1,18 +1,26 @@
 package com.example.egfootballtracker.View;
 
 import android.app.Activity;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.egfootballtracker.Model.PlayerDetails;
 import com.example.egfootballtracker.R;
 import com.example.egfootballtracker.Services.ApiInterface;
 import com.google.firebase.database.DatabaseReference;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -33,7 +41,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
             txtMotMStatisticPassing,txtPlayerPerformanceStatisticPassing; //For Player's Statistic
 
     DatabaseReference myRef;
-    Button btnDelete,btnEdit;
+    Button btnDelete,btnEdit,btnDownloadData;
     CircleImageView imageView;
     ApiInterface apiInterface;
     Activity thisActivity;
@@ -68,6 +76,8 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         imageView=findViewById(R.id.imgProfileDisplayListStatistic);
         btnDelete =  findViewById(R.id.btnDelete);
         btnEdit = findViewById(R.id.btnEdit);
+//        btnDownloadData = findViewById(R.id.btnDownloadData);
+
         txtPlayerNameStatistic.setText(playerDetails.getPlayerName());
         txtPlayerAgeStatistic.setText(playerDetails.getPlayerApps());
         txtPlayerBornStatistic.setText(playerDetails.getPlayerBorn());
@@ -99,6 +109,8 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txtArialsStatisticPassing.setText(playerDetails.getPlayerArialWon());
         txtMotMStatisticPassing.setText(playerDetails.getPlayerMom());
         txtPlayerPerformanceStatisticPassing.setText(playerDetails.getPlayerPerformance());
+
+
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +159,7 @@ public class PlayerStatisticActivity extends AppCompatActivity {
 
 
 
-
+                playerPerformanceCalculation();
                 ApiInterface apiInterface = retrofit.create(ApiInterface.class);
                 Call<PlayerDetails> call = apiInterface.editPlayer(playerDetails.getId(),playerDetails);
                 call.enqueue(new Callback<>() {
@@ -165,6 +177,117 @@ public class PlayerStatisticActivity extends AppCompatActivity {
                 });
             }
         });
-    }
 
+//        btnDownloadData.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//            @Override
+//            public void onClick(View v) {
+//                createMyPDF();
+//            }
+//        });
+    }
+    public void playerPerformanceCalculation(){
+
+        int AppsStatistic,GoalsStaistic;
+        double avg;
+
+        AppsStatistic = Integer.parseInt(txtAppsStatisticPassing.getText().toString());
+        GoalsStaistic = Integer.parseInt(txtGoalsStatisticPassing.getText().toString());
+        avg=GoalsStaistic/AppsStatistic;
+        txtSpGStatisticPassing.setText(String.valueOf(avg));
+
+
+
+        if(avg >= 4)
+        {
+            txtPlayerPerformanceStatisticPassing.setText("Outstanding");
+            Toast.makeText(PlayerStatisticActivity.this,
+                    "Overall performance is Outstanding",
+                    Toast.LENGTH_LONG).show();
+        }
+        else if(avg >= 2)
+        {
+            txtPlayerPerformanceStatisticPassing.setText("Excellent");
+            Toast.makeText(PlayerStatisticActivity.this,
+                    "Overall performance is Excellent",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        else if(avg >= 1)
+        {
+            txtPlayerPerformanceStatisticPassing.setText("Mediocre");
+            Toast.makeText(PlayerStatisticActivity.this,
+                    "Overall performance is Mediocre",
+                    Toast.LENGTH_LONG).show();
+        }
+
+
+        else if(avg >= 0.5)
+        {
+            txtPlayerPerformanceStatisticPassing.setText("Average");
+            Toast.makeText(PlayerStatisticActivity.this,
+                    "Overall performance is Average",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        else
+        {
+            txtPlayerPerformanceStatisticPassing.setText("Poor");
+            Toast.makeText(PlayerStatisticActivity.this,
+                    "Overall performance is Poor",
+                    Toast.LENGTH_LONG).show();
+        }
+
+    }
+//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//    public void createMyPDF(){
+//
+//        PdfDocument myPdfDocument = new PdfDocument();
+//        PdfDocument.PageInfo myPageInfo = new PdfDocument.PageInfo.Builder(300,600,1).create();
+//        PdfDocument.Page myPage = myPdfDocument.startPage(myPageInfo);
+//
+//
+//
+//        Paint myPaint = new Paint();
+//        //For Profile
+//        String PLayersName = txtPlayerNameStatistic.getText().toString().trim();
+////        String PLayersAge = txtPLayersAge.getText().toString().trim();
+////        String PLayersBorn = txtPLayersBorn.getText().toString().trim();
+////        String PlayingCountry = txtPlayingCountry.getText().toString().trim();
+////        String PlayersHeight = txtPlayersHeight.getText().toString().trim();
+////        String PlayersPosition = txtPlayersPosition.getText().toString().trim();
+////
+////        //For Player's Statistics
+////        String AppsStatistic = txtAppsStatistic.getText().toString().trim();
+////        String MinutesStatistic = txtMinutesStatistic.getText().toString().trim();
+////        String GoalsStaistic = txtGoalsStaistic.getText().toString().trim();
+////        String AssistStatistic = txtAssistStatistic.getText().toString().trim();
+////        String YelCardStatistic = txtYelCardStatistic.getText().toString().trim();
+////        String RedCardStatistic = txtRedCardStatistic.getText().toString().trim();
+////        String SpGStatistic = txtSpGStatistic.getText().toString().trim();
+////        String PSStatistic = txtPSStatistic.getText().toString().trim();
+////        String ArialsWonStatistic = txtArialsWonStatistic.getText().toString().trim();
+////        String MotMStatistic = txtMotMStatistic.getText().toString().trim();
+////        String PlayerPerfomanceStatistic = txtPlayerPerfomanceStatistic.getText().toString().trim();
+//
+//        int x = 10, y=25;
+//
+//        myPage.getCanvas().drawText
+//                ( PLayersName, x, y, myPaint);
+//        myPdfDocument.finishPage(myPage);
+//
+//        String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/Players Details.pdf";
+//        File myFile = new File(myFilePath);
+//        try {
+//            myPdfDocument.writeTo(new FileOutputStream(myFile));
+//            Toast.makeText(PlayerStatisticActivity.this, "Data saved as pdf format", Toast.LENGTH_SHORT).show();
+//
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//            txtPlayerNameStatistic.setText("ERROR");
+//        }
+//
+//        myPdfDocument.close();
+//    }
 }

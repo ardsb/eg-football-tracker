@@ -30,7 +30,7 @@
             android:name=".View.PlayerStatisticActivity"
             android:exported="false" />
         <activity
-            android:name=".View.DisplayPlayersDetailsActivity"
+            android:name=".View.PlayersListActivity"
             android:exported="false" />
         <activity
             android:name=".View.AddPlayerDetailsActivity"
